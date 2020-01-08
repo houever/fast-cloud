@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.fast.usc.mapper.ISysLoginConfigMapper">
+                <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="cn.fast.usc.entity.SysLoginConfig">
+                                                                                                                                                        <result column="id" property="id"/>
+                            <result column="create_time" property="createTime"/>
+                            <result column="update_time" property="updateTime"/>
+                            <result column="create_by" property="createBy"/>
+                            <result column="update_by" property="updateBy"/>
+                            <result column="is_del" property="isDel"/>
+                                                            <result column="bg_video" property="bgVideo"/>
+                                                                <result column="bg_webm" property="bgWebm"/>
+                                                                <result column="bg_img" property="bgImg"/>
+                                                                <result column="is_bg" property="isBg"/>
+                                    </resultMap>
+
+                <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+                            id,
+                            create_time,
+                            update_time,
+                            create_by,
+                            update_by,
+                            is_del,
+                        bg_video, bg_webm, bg_img, is_bg
+        </sql>
+
+        <select id="getAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_login_config
+    </select>
+</mapper>

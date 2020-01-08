@@ -1,0 +1,127 @@
+spring:
+  rabbitmq:
+    host: ${RABBIT_MQ_HOST:10.1.70.78}
+    port: ${RABBIT_MQ_PORT:5672}
+    username: ${RABBIT_MQ_USERNAME:guest}
+    password: ${RABBIT_MQ_PASSWORD:guest}
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:10.1.70.78}:3306/fast-admin?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF8&autoReconnect=true&useSSL=false
+    username: root
+    # Jasypt加密 可到common-utils中找到JasyptUtil加解密工具类生成加密结果 格式为ENC(加密结果)
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    initialSize: 1
+    maxActive: 20
+    minIdle: 3
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    #配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+  redis:
+    host: ${REDIS_HOST:10.1.70.78}
+    port: 6379
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    # 自动生成表结构
+    generate-ddl: true
+    hibernate:
+      ddl-auto: none
+      #update级别会根据bean创建/更新表结构
+    properties:
+      hibernate:
+        format_sql: true
+  #  mvc:
+  #    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: true
+  cloud:
+    consul:
+      enabled: true
+      host: ${CONSUL_HOST:10.1.70.78}
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name} #设置 注册到 consul 的服务名称
+        register: true # 是否开启在 consul 中注册服务
+        enabled: true #启用 consul 服务发现
+        health-check-interval: 10s  # consul 健康检查频率
+        instance-id: ${spring.application.name}:${server.port}  # 配置注册到consul 服务的id
+        health-check-path: /actuator/health #定义 consul 健康检查路径
+        health-check-timeout: 10s #健康检查超时时间
+        prefer-ip-address: true
+        ip-address: ${LOCAL:10.1.70.75}
+# Mybatis-plus
+mybatis-plus:
+  # 放在resource目录 classpath:/mapper/*Mapper.xml
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.fast.usc.entity
+  typeEnumsPackage: com.fast.usc.entity.enums
+  global-config:
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: id_worker
+    #字段策略 0:"忽略判断",1:"非 NULL 判断",2:"非空判断"
+    field-strategy: 2
+    #驼峰下划线转换
+    db-column-underline: true
+    #刷新mapper 调试神器
+    refresh-mapper: true
+    #数据库大写下划线转换
+    #capital-mode: true
+    #逻辑删除配置（下面3个配置）
+    #    logic-delete-value: 0
+    #    logic-not-delete-value: 1
+    # SQL 解析缓存，开启后多租户 @SqlParser 注解生效
+    sql-parser-cache: true
+    #    db-config:
+    #      #逻辑删除配置
+    #      logic-not-delete-value: 0
+    #      logic-delete-value: 1
+    #      column-like: true
+    refresh: true
+    worker-id:
+  configuration:
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
+  check-config-location: true
+
+#配置日志级别
+logging:
+  level:
+    org.springframework.web: debug
+    io.swagger.models.parameters.AbstractSerializableParameter: error
+# Swagger界面内容配置
+swagger:
+  enable: true
+  title: FAST-cloud 系统用户服务 API接口文档
+  description: FAST-cloud Api 用户服务
+  version: 1.0.0
+  termsOfServiceUrl:
+  contact:
+    name: Hou
+    url:
+    email: 349514537@qq.com
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"    #监控所有端点，其中health和status是必须监控的
+        exclude: configprops    #排除对配置信息的监控，每次浏览这个节点的时候，
+        #数据库的链接就一直释放不掉，最后导致超时，因为配置信息的监控也不重要，
+        #就不再监控这个节点，以下为可监控的endpoint。可以根据需要有选择的进行监控。
+        #- health,status,env,metrics,dump,jolokia,info,
+        #configprops,trace,logfile,refresh,flyway,
+        #liquibase,heapdump,loggers,auditevents,hystrix.stream,activiti

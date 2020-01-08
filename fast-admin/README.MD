@@ -1,0 +1,1 @@
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class, MybatisPlusConfig.class})

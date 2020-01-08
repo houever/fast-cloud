@@ -1,0 +1,9 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+cn.fast.web.swagger.Swagger2Properties,\
+cn.fast.web.swagger.Swagger2Config,\
+cn.fast.web.CustomSpringWebMvcConfig,\
+cn.fast.web.mybatisplus.MybatisPlusConfig,\
+cn.fast.web.filter.CustomFilter,\
+cn.fast.web.mybatisplus.handler.MyMetaObjectHandler,\
+cn.fast.web.mybatisplus.tenant.TenantContextHolderFilter,\
+cn.fast.web.controller.CommonController

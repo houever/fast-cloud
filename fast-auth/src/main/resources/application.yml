@@ -1,0 +1,75 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  rabbitmq:
+    host: ${RABBIT_MQ_HOST:10.1.70.78}
+    port: ${RABBIT_MQ_PORT:5672}
+    username: ${RABBIT_MQ_USERNAME:guest}
+    password: ${RABBIT_MQ_PASSWORD:guest}
+  redis:
+    host: ${REDIS_HOST:10.1.70.78}
+    port: 6379
+    password:
+  cache:
+    redis:
+      time-to-live: 1d
+      use-key-prefix: true
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:10.1.70.78}:3306/fast-auth?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF8&autoReconnect=true&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+  cloud:
+    consul:
+      enabled: true
+      host: ${CONSUL_HOST:10.1.70.78}
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name} #设置 注册到 consul 的服务名称
+        register: true # 是否开启在 consul 中注册服务
+        enabled: true #启用 consul 服务发现
+        health-check-interval: 10s  # consul 健康检查频率
+        instance-id: ${spring.application.name}:${server.port}  # 配置注册到consul 服务的id
+        health-check-path: /actuator/health #定义 consul 健康检查路径
+        health-check-timeout: 10s #健康检查超时时间
+        prefer-ip-address: true
+        ip-address: ${LOCAL:10.1.70.75}
+feign:
+  hystrix:
+    enabled: true
+hystrix:
+  threadpool:
+    default:
+      coreSize: 1000 #并发执行的最大线程数，默认10
+      maxQueueSize: 1000 #BlockingQueue的最大队列数
+      queueSizeRejectionThreshold: 500 #即使maxQueueSize没有达到，达到queueSizeRejectionThreshold该值后，请求也会被拒绝
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+#admin监控
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"    #监控所有端点，其中health和status是必须监控的
+        exclude: configprops    #排除对配置信息的监控，每次浏览这个节点的时候，
+          #数据库的链接就一直释放不掉，最后导致超时，因为配置信息的监控也不重要，
+          #就不再监控这个节点，以下为可监控的endpoint。可以根据需要有选择的进行监控。
+          #- health,status,env,metrics,dump,jolokia,info,
+        #configprops,trace,logfile,refresh,flyway,
+        #liquibase,heapdump,loggers,auditevents,hystrix.stream,activiti
+  metrics:
+    web:
+      server:
+        auto-time-requests: false
+logging:
+  level:
+    com.mycloud.admin: debug
+    #    org.springframework.security: debug
+    org.springframework.web: debug

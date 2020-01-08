@@ -1,0 +1,25 @@
+package ${package.ServiceImpl};
+import javax.annotation.Resource;
+import cn.fast.web.base.BaseServiceImpl;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import ${parent}.repository.${entity}Repository;
+import ${package.Entity}.${entity};
+import ${package.Service}.${table.serviceName};
+import ${package.Mapper}.${table.mapperName};
+/**
+ * <p>
+ * $!{table.comment} 服务实现类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Slf4j
+@Service
+public class ${table.serviceImplName} extends BaseServiceImpl<${table.mapperName},${entity}Repository,${entity}> implements ${table.serviceName}{
+
+    @Resource
+    private ${table.mapperName} ${entity}Mapper;
+
+}

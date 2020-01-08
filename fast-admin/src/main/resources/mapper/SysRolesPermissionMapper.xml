@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.fast.usc.mapper.ISysRolesPermissionMapper">
+                <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="cn.fast.usc.entity.SysRolesPermission">
+                                                                                                <result column="id" property="id"/>
+                                                            <result column="rid" property="rid"/>
+                                                                <result column="pid" property="pid"/>
+                                    </resultMap>
+
+                <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+                            id,
+                        rid, pid
+        </sql>
+
+        <select id="getAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_roles_permission
+    </select>
+</mapper>

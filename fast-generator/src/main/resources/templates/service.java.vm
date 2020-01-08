@@ -1,0 +1,14 @@
+package ${package.Service};
+import cn.fast.web.base.BaseService;
+import ${package.Entity}.${entity};
+/**
+ * <p>
+ * $!{table.comment} 接口
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+public interface ${table.serviceName} extends BaseService<${entity}>{
+
+}

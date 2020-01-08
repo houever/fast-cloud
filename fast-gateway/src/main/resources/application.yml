@@ -1,0 +1,120 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  redis:
+    host: ${REDIS_HOST:10.1.70.78}
+    port: 6379
+    password:
+  rabbitmq:
+    host: ${RABBIT_HOST:10.1.70.78}
+    port: 5672
+    username: guest
+    password: guest
+  #jwt密码
+  security:
+    oauth2:
+      jwt:
+        signingKey: 123456
+  cloud:
+    consul:
+      enabled: true
+      host: ${CONSUL_HOST:10.1.70.78}
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name} #设置 注册到 consul 的服务名称
+        register: true # 是否开启在 consul 中注册服务
+        enabled: true #启用 consul 服务发现
+        health-check-interval: 10s  # consul 健康检查频率
+        instance-id: ${spring.application.name}:${server.port}  # 配置注册到consul 服务的id
+        health-check-path: /actuator/health #定义 consul 健康检查路径
+        health-check-timeout: 10s #健康检查超时时间
+        prefer-ip-address: true
+        ip-address: ${LOCAL:10.1.70.75}
+    gateway:
+      locator:
+        enabled: true   # 启用服务注册与发现
+        lowerCaseServiceId: true  # 将服务名大写转小写
+#        routes:
+#          # =====================================
+#          - id: api-usc
+#            uri: lb://mycloud-provider-usc
+#            order: 8000
+#            predicates:
+#              - Path=/api/auth/**
+#            filters:
+#              - StripPrefix=2   #StripPrefix 表明 忽略前缀路径  /api/auth/xxx ==> /xxx
+      default-filters:
+        - name: Retry
+          args:
+            retries: 3
+            statuses: BAD_GATEWAY
+        - AddResponseHeader=X-Response-Default-Foo, Default-Bar
+        - name: RequestRateLimiter
+          args:
+            redis-rate-limiter.replenishRate: 100  #令牌桶的容积
+            redis-rate-limiter.burstCapacity: 10  #流速 每秒
+            rate-limiter: "#{@defaultRedisRateLimiter}"  #SPEL表达式去的对应的bean
+            key-resolver: "#{@remoteAddressKeyResolver}" #SPEL表达式去的对应的bean,"#{@ipKeyResolver}"
+
+#网关白名单，无需要签权url test
+gate:
+  ignore:
+    authentication:
+      startWith: /oauth,/open,/upload,/v2/api-docs
+# Swagger界面内容配置
+swagger:
+  enable: true
+  title: FAST-CLOUD 网关 API接口文档
+  description: MYCLOUD-admin Api 网关
+  version: 1.0.0
+  termsOfServiceUrl:
+  contact:
+    name: Hou
+    url:
+    email: 349514537@qq.com
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+#feign的配置，连接超时及读取超时配置
+#  启动时，程序会进行包扫描，扫描所有包下所有@FeignClient注解的类，并将这些类注入到spring的IOC容器中。当定义的Feign中的接口被调用时，通过JDK的动态代理来生成RequestTemplate。
+#  RequestTemplate中包含请求的所有信息，如请求参数，请求URL等。
+#  RequestTemplate声场Request，然后将Request交给client处理，这个client默认是JDK的HTTPUrlConnection，也可以是OKhttp、Apache的HTTPClient等。
+#  最后client封装成LoadBaLanceClient，结合ribbon负载均衡地发起调用。
+#  注意：
+#  由于开启GZIP压缩之后，Feign之间的调用数据通过二进制协议进行传输，返回值需要修改为ResponseEntity<byte[]>才可以正常显示，否则会导致服务之间的调用乱码。
+feign:
+#  compression:
+#    request: #请求
+#      enabled: true #开启
+#      mime-types: text/xml,application/xml,application/json #开启支持压缩的MIME TYPE
+#      min-request-size: 2048 #配置压缩数据大小的下限
+#    response: #响应
+#      enabled: true #开启响应GZIP压缩
+  client:
+    config:
+      default:
+        connectTimeout: 50000
+        readTimeout: 50000
+        loggerLevel: BASIC
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+  hystrix:
+    enabled: true
+logging:
+  level:
+    com.mycloud.admin: debug    #自己项目包名下的日志级别
+
+security:
+  oauth2:
+    clientId: mycloud
+    clientSecret: mycloud
+    userAuthorizationUri: http://${OAUTH_IP:localhost}:8000/oauth/authorize
+    grant-type: password
+    scope: server
+    access-token-uri: http://${OAUTH_IP:localhost}:8000/oauth/token
+    userInfoUri: http://${OAUTH_IP:localhost}:8000/user
+    check-token-access: http://${OAUTH_IP:localhost}:8000/oauth/check_token

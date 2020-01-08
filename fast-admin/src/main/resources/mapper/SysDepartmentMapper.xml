@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.fast.usc.mapper.ISysDepartmentMapper">
+                <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="cn.fast.usc.entity.SysDepartment">
+                                                                                                                                                                                                                <result column="id" property="id"/>
+                            <result column="create_time" property="createTime"/>
+                            <result column="update_time" property="updateTime"/>
+                            <result column="create_by" property="createBy"/>
+                            <result column="update_by" property="updateBy"/>
+                            <result column="is_del" property="isDel"/>
+                                                            <result column="dept_name" property="deptName"/>
+                                                                <result column="leader" property="leader"/>
+                                                                <result column="parent_id" property="parentId"/>
+                                                                <result column="sort" property="sort"/>
+                                                                <result column="enabled" property="enabled"/>
+                                                                <result column="is_parent" property="isParent"/>
+                                    </resultMap>
+
+                <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+                            id,
+                            create_time,
+                            update_time,
+                            create_by,
+                            update_by,
+                            is_del,
+                        dept_name, leader, parent_id, sort, enabled, is_parent
+        </sql>
+
+        <select id="getAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_department
+    </select>
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>cn.fast</groupId>
+		<artifactId>fast-cloud</artifactId>
+		<version>0.0.1.RELEASE</version>
+	</parent>
+	<groupId>cn.fast</groupId>
+	<artifactId>fast-common</artifactId>
+	<version>0.0.1.RELEASE</version>
+	<name>fast-common</name>
+	<description>springboot fast boot project</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		
+	</dependencies>
+</project>

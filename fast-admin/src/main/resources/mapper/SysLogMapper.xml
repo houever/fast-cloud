@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.fast.usc.mapper.ISysLogMapper">
+                <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="cn.fast.usc.entity.SysLog">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                <result column="id" property="id"/>
+                            <result column="create_time" property="createTime"/>
+                            <result column="update_time" property="updateTime"/>
+                            <result column="create_by" property="createBy"/>
+                            <result column="update_by" property="updateBy"/>
+                            <result column="is_del" property="isDel"/>
+                                                            <result column="title" property="title"/>
+                                                                <result column="type" property="type"/>
+                                                                <result column="request_uri" property="requestUri"/>
+                                                                <result column="method" property="method"/>
+                                                                <result column="params" property="params"/>
+                                                                <result column="user_agent" property="userAgent"/>
+                                                                <result column="service_id" property="serviceId"/>
+                                                                <result column="module_name" property="moduleName"/>
+                                                                <result column="exception" property="exception"/>
+                                                                <result column="username" property="username"/>
+                                                                <result column="ip" property="ip"/>
+                                                                <result column="ip_address" property="ipAddress"/>
+                                                                <result column="cost_time" property="costTime"/>
+                                                                <result column="status" property="status"/>
+                                    </resultMap>
+
+                <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+                            id,
+                            create_time,
+                            update_time,
+                            create_by,
+                            update_by,
+                            is_del,
+                        title, type, request_uri, method, params, user_agent, service_id, module_name, exception, username, ip, ip_address, cost_time, status
+        </sql>
+
+        <select id="getAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_log
+    </select>
+</mapper>
