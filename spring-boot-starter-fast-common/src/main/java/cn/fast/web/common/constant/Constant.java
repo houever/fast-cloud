@@ -2,7 +2,7 @@ package cn.fast.web.common.constant;
 
 /**
  * @author mycloud
- * @Package cocom.mycloud.admin.constant
+ *  cocom.mycloud.admin.constant
  * @Description: 公用常量类
  * @date 2018/4/12 14:33
  */

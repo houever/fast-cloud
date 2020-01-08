@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  * @author huangqi
- * @Package com.mycloud.cloud.oauth2server.handler
+ *  cn.fast.auth.oauth2server.handler
  * @date 2018/6/27 16:22
  */
 @Slf4j

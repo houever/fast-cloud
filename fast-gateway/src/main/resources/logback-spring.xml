@@ -72,7 +72,7 @@
     <!-- 4. 最终的策略 -->
     <!-- 4.1 开发环境:打印控制台-->
     <springProfile name="dev">
-        <logger name="com.mycloud.admin" level="debug"/>
+        <logger name="cn.fast.admin" level="debug"/>
         <root level="info">
             <appender-ref ref="CONSOLE" />
         </root>

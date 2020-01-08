@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 
 /**
  * @author huangqi
- * @Package com.mycloud.admin.config
+ *  cn.fast.admin.config
  * @Description: ResourceServerConfig
  * @date 2018/6/27 9:39
  */

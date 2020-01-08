@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author huangqi
- * @Package com.mycloud.admin.feign.hystrix
+ *  cn.fast.admin.feign.hystrix
  * @date 2018/6/28 14:19
  */
 @Component

@@ -5,7 +5,7 @@ import cn.fast.web.common.result.ResultEnum;
 
 /**
  * @author huangqi
- * @Package com.mycloud.admin.excepiton
+ *  cn.fast.admin.excepiton
  * @Description: 自定义业务异常
  * @date 2018/7/3 16:09
  */

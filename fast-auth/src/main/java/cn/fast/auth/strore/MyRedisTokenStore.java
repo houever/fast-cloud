@@ -20,7 +20,7 @@ import java.util.*;
 
 /**
  * @author huangqi
- * @Package com.mycloud.admin.strore
+ *  cn.fast.admin.strore
  * @Description: 自定义RedisTokenStore
  * @date 2018/6/28 16:31
  */

@@ -9,7 +9,7 @@ import java.util.Map;
 
 /**
  * @author huangqi
- * @Package com.zm.business.util
+ *  com.zm.business.util
  * @Description: 枚举工具类
  * @date 2018/6/14 14:35
  */

@@ -50,7 +50,7 @@
 	<logger name="org.activiti.engine.impl.db" level="DEBUG">
 		<appender-ref ref="debug"/>
 	</logger>
-	<logger name="com.mycloud.common" level="DEBUG">
+	<logger name="cn.fast.common" level="DEBUG">
 		<appender-ref ref="debug"/>
 	</logger>
 

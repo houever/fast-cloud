@@ -5,7 +5,7 @@ import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
 
 /**
  * @author huangqi
- * @Package com.mycloud.cloud.oauth2server.handler
+ *  cn.fast.auth.oauth2server.handler
  * @date 2018/6/27 16:21
  */
 @JsonSerialize(using = CustomOauthExceptionSerializer.class)

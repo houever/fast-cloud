@@ -106,7 +106,7 @@ feign:
     enabled: true
 logging:
   level:
-    com.mycloud.admin: debug    #自己项目包名下的日志级别
+    cn.fast.admin: debug    #自己项目包名下的日志级别
 
 security:
   oauth2:

@@ -2,4 +2,4 @@ server:
   port: 9001
 spring:
   application:
-    name: fast-usc
+    name: fast-admin

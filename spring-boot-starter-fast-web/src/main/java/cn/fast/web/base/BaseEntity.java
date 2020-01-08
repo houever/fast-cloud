@@ -18,7 +18,7 @@ import java.util.Date;
 
 /**
  * @author Administrator
- * @Package com.mycloud.entity
+ *  cn.fast.entity
  * @Description: 基础实体类
  * @date 2018/4/12 14:00
  */

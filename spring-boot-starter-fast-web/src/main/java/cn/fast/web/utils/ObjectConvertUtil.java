@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * @author huangqi
- * @Package com.mycloud.admin.utils
+ *  cn.fast.admin.utils
  * @Description: 类转换
  * @date 2018/7/1 22:13
  */

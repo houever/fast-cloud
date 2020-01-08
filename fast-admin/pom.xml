@@ -20,6 +20,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>cn.fast</groupId>
+			<artifactId>spring-boot-starter-fast-common</artifactId>
+			<version>0.0.1.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.fast</groupId>
 			<artifactId>spring-boot-starter-fast-web</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
@@ -28,6 +33,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+    </dependencies>
 
 </project>

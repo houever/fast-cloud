@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.fast.usc.mapper.ISysRolesMapper">
-                <!-- 通用查询映射结果 -->
-        <resultMap id="BaseResultMap" type="cn.fast.usc.entity.SysRoles">
-                                                                                                                                                                                    <result column="id" property="id"/>
-                            <result column="create_time" property="createTime"/>
-                            <result column="update_time" property="updateTime"/>
-                            <result column="create_by" property="createBy"/>
-                            <result column="update_by" property="updateBy"/>
-                            <result column="is_del" property="isDel"/>
-                                                            <result column="code" property="code"/>
-                                                                <result column="name" property="name"/>
-                                                                <result column="def" property="def"/>
-                                                                <result column="remark" property="remark"/>
-                                                                <result column="data_type" property="dataType"/>
-                                    </resultMap>
+<mapper namespace="cn.fast.admin.mapper.ISysRolesMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.fast.admin.entity.SysRoles">
+        <result column="id" property="id"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="create_by" property="createBy"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="is_del" property="isDel"/>
+        <result column="code" property="code"/>
+        <result column="name" property="name"/>
+        <result column="def" property="def"/>
+        <result column="remark" property="remark"/>
+        <result column="data_type" property="dataType"/>
+    </resultMap>
 
-                <!-- 通用查询结果列 -->
-        <sql id="Base_Column_List">
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
                             id,
                             create_time,
                             update_time,
@@ -27,9 +27,24 @@
                         code, name, def, remark, data_type
         </sql>
 
-        <select id="getAll" resultMap="BaseResultMap">
+    <select id="getAll" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>
         FROM sys_roles
+    </select>
+    <select id="getRolesByAccountId" parameterType="java.lang.String" resultType="cn.fast.admin.entity.SysRoles">
+        SELECT r.id,r.code,r.name
+        FROM sys_account_roles ar,
+             sys_roles r
+        where ar.rid = r.id
+          AND ar.aid = #{id}
+    </select>
+    <select id="getPageList" resultType="cn.fast.admin.model.dto.RoleDTO">
+        SELECT sr.*,GROUP_CONCAT(DISTINCT srp.pid) pids,GROUP_CONCAT(DISTINCT srd.dept_id) depts
+        FROM sys_roles sr
+                 LEFT JOIN sys_roles_permission srp ON sr.id = srp.rid
+                 LEFT JOIN sys_roles_dept srd ON sr.id=srd.rid
+        WHERE sr.is_del=0
+        GROUP BY sr.id
     </select>
 </mapper>

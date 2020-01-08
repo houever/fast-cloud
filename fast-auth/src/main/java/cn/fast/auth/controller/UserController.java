@@ -17,7 +17,7 @@ import java.security.Principal;
 
 /**
  * @author Administrator
- * @Package com.mycloud.cloud.oauth2server.controller
+ *  cn.fast.auth.oauth2server.controller
  * @Description: 返回用户信息
  * @date 2018/4/13 13:58
  */

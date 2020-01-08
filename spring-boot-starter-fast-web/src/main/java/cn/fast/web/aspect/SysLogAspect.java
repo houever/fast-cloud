@@ -51,7 +51,7 @@ public class SysLogAspect {
      */
     //@Pointcut("execution(* *..controller..*Controller*.*(..))")
     @Pointcut("@annotation(cn.fast.web.aspect.log.annotations.SystemLog)")
-    //@Pointcut("execution(public com.mycloud.common.result.Result *(..))")
+    //@Pointcut("execution(public cn.fast.common.result.Result *(..))")
     public void controllerAspect() {
 
     }

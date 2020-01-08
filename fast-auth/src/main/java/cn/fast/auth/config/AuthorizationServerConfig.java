@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author Administrator
- * @Package com.mycloud.admin.cloud.oauth2server.config
+ *  cn.fast.admin.cloud.oauth2server.config
  * @Description: 认证服务器
  * @date 2018/4/12 15:16
  */

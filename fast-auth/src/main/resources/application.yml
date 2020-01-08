@@ -70,6 +70,6 @@ management:
         auto-time-requests: false
 logging:
   level:
-    com.mycloud.admin: debug
+    cn.fast.admin: debug
     #    org.springframework.security: debug
     org.springframework.web: debug

@@ -13,7 +13,7 @@ import java.io.IOException;
 
 /**
  * @author mycloud
- * @Package com.mycloud.cloud.oauth2server.handler
+ *  cn.fast.auth.oauth2server.handler
  * @Description: UnauthorizedHandler
  * @date 2018/4/19 10:22
  */

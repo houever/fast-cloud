@@ -16,7 +16,7 @@ import static org.apache.commons.lang.RandomStringUtils.randomAlphabetic;
 
 /**
  * @author houqijun
- * @Package com.mycloud.admin.converter
+ *  cn.fast.admin.converter
  * @Description: 自定义转换令牌
  *
  * 现在让我们设置一些基础设施，以便能够在访问令牌中添加一些自定义声明。框架提供的标准声明都很好，

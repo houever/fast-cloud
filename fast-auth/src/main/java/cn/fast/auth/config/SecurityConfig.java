@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 
 /**
  * @author Administrator
- * @Package com.mycloud.cloud.oauth2server.config
+ *  cn.fast.auth.oauth2server.config
  * @Description: sercurity安全配置
  * @date 2018/4/13 11:44
  */

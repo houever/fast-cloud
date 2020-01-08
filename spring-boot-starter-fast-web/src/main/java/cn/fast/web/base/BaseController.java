@@ -16,7 +16,7 @@ import java.util.Collection;
 
 /**
  * @author Administrator
- * @Package cocom.mycloud.admin.base
+ *  cocom.mycloud.admin.base
  * @Description: BaseController
  * @date 2018/4/17 11:08
  */

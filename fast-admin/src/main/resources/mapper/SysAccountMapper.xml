@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.fast.usc.mapper.ISysAccountMapper">
-                <!-- 通用查询映射结果 -->
-        <resultMap id="BaseResultMap" type="cn.fast.usc.entity.SysAccount">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <result column="id" property="id"/>
-                            <result column="create_time" property="createTime"/>
-                            <result column="update_time" property="updateTime"/>
-                            <result column="create_by" property="createBy"/>
-                            <result column="update_by" property="updateBy"/>
-                            <result column="is_del" property="isDel"/>
-                                                            <result column="username" property="username"/>
-                                                                <result column="password" property="password"/>
-                                                                <result column="phone" property="phone"/>
-                                                                <result column="avatar" property="avatar"/>
-                                                                <result column="introduction" property="introduction"/>
-                                                                <result column="address" property="address"/>
-                                                                <result column="gender" property="gender"/>
-                                                                <result column="dept_id" property="deptId"/>
-                                                                <result column="email" property="email"/>
-                                                                <result column="nick_name" property="nickName"/>
-                                                                <result column="pass_strengh" property="passStrengh"/>
-                                                                <result column="type" property="type"/>
-                                                                <result column="enabled" property="enabled"/>
-                                                                <result column="account_non_expired" property="accountNonExpired"/>
-                                                                <result column="account_non_locked" property="accountNonLocked"/>
-                                                                <result column="credentials_non_expired" property="credentialsNonExpired"/>
-                                                                <result column="tenant_id" property="tenantId"/>
-                                    </resultMap>
+<mapper namespace="cn.fast.admin.mapper.ISysAccountMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.fast.admin.entity.SysAccount">
+        <result column="id" property="id"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="create_by" property="createBy"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="is_del" property="isDel"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="phone" property="phone"/>
+        <result column="avatar" property="avatar"/>
+        <result column="introduction" property="introduction"/>
+        <result column="address" property="address"/>
+        <result column="gender" property="gender"/>
+        <result column="dept_id" property="deptId"/>
+        <result column="email" property="email"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="pass_strengh" property="passStrengh"/>
+        <result column="type" property="type"/>
+        <result column="enabled" property="enabled"/>
+        <result column="account_non_expired" property="accountNonExpired"/>
+        <result column="account_non_locked" property="accountNonLocked"/>
+        <result column="credentials_non_expired" property="credentialsNonExpired"/>
+        <result column="tenant_id" property="tenantId"/>
+    </resultMap>
 
-                <!-- 通用查询结果列 -->
-        <sql id="Base_Column_List">
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
                             id,
                             create_time,
                             update_time,
@@ -39,9 +39,47 @@
                         username, password, phone, avatar, introduction, address, gender, dept_id, email, nick_name, pass_strengh, type, enabled, account_non_expired, account_non_locked, credentials_non_expired, tenant_id
         </sql>
 
-        <select id="getAll" resultMap="BaseResultMap">
+    <select id="getAll" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>
         FROM sys_account
+    </select>
+    <select id="getAccountPage" parameterType="cn.fast.web.base.BasePage" resultType="cn.fast.admin.model.dto.AccountDTO">
+        SELECT sa.*,sd.dept_name,GROUP_CONCAT(sar.rid) roles
+        from sys_account sa
+        LEFT JOIN sys_department sd ON sa.dept_id=sd.id
+        LEFT JOIN sys_account_roles sar ON sa.id=sar.aid
+        <where>
+            1=1
+            <if test="param.username != null and param.username!=''">
+                <bind name="param.username" value=" '%' + param.username + '%' "/>
+                AND sa.username like #{param.username}
+            </if>
+            <if test="param.phone != null and param.phone!=''">
+                <bind name="param.phone" value=" '%' + param.phone + '%' "/>
+                AND sa.phone like #{param.phone}
+            </if>
+            <if test="param.email != null and param.email!=''">
+                <bind name="param.email" value=" '%' + param.email + '%' "/>
+                AND sa.email like #{param.email}
+            </if>
+            <if test="param.gender != null">
+                AND sa.gender= #{param.gender}
+            </if>
+            AND sa.is_del=0
+            GROUP BY sa.id
+        </where>
+    </select>
+    <select id="selectRolesByUrl" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT sr.code
+        FROM sys_permission sp
+                 LEFT JOIN sys_roles_permission srp ON sp.id=srp.pid
+                 LEFT JOIN sys_roles sr ON srp.rid=sr.id
+        WHERE sp.pattern=#{url}
+    </select>
+    <select id="findUserByRoleId" parameterType="java.lang.String" resultType="cn.fast.admin.entity.SysAccount">
+        SELECT DISTINCT sa.*
+        FROM sys_account_roles sar INNER JOIN sys_account sa ON sar.aid=sa.id
+        WHERE sar.rid=#{id}
     </select>
 </mapper>
