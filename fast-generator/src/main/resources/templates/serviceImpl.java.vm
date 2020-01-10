@@ -3,7 +3,7 @@ import javax.annotation.Resource;
 import cn.fast.web.base.BaseServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import ${parent}.repository.${entity}Repository;
+import ${cfg.parent}.repository.${entity}Repository;
 import ${package.Entity}.${entity};
 import ${package.Service}.${table.serviceName};
 import ${package.Mapper}.${table.mapperName};

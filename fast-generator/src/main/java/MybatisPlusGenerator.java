@@ -45,7 +45,7 @@ public class MybatisPlusGenerator {
             e.printStackTrace();
         }
 
-        MyAutoGenerator mpg = new MyAutoGenerator();
+        AutoGenerator mpg = new AutoGenerator();
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         gc.setOutputDir(workspace+ "/src/main/java");
@@ -107,32 +107,24 @@ public class MybatisPlusGenerator {
         pc.setParent(PACKAGENAME);
         //pc.setModuleName("");
         mpg.setPackageInfo(pc);
-
+        String packageName=PACKAGENAME;
         // 注入自定义配置，可以在 VM 中使用 cfg.abc 设置的值
         InjectionConfig cfg = new InjectionConfig() {
             @Override
             public void initMap() {
                 Map<String, Object> map = new HashMap<String, Object>();
                 map.put("abc", this.getConfig().getGlobalConfig().getAuthor() + "-mp");
+                map.put("parent", packageName);
                 this.setMap(map);
             }
         };
-        List<FileOutConfig> focList = new ArrayList<FileOutConfig>();
-        focList.add(new FileOutConfig("templates/entity.java.vm") {
-
-            @Override
-            public String outputFile(TableInfo tableInfo) {
-                return "E://gemcode//my_" + tableInfo.getEntityName() + ".java";
-            }
-        });
-        cfg.setFileOutConfigList(focList);
         mpg.setCfg(cfg);
 
         // 自定义模板配置，模板可以参考源码 /mybatis-plus/src/main/resources/template 使用 copy
         // 至您项目 src/main/resources/template 目录下，模板名称也可自定义如下配置：
 
         TemplateConfig tc = new TemplateConfig();
-        //tc.setController("controller");
+        tc.setController("/templates/controller.java.vm");
         tc.setEntity("templates/entity.java.vm");
         tc.setService("templates/service.java.vm");
         tc.setMapper("templates/mapper.java.vm");
@@ -140,7 +132,7 @@ public class MybatisPlusGenerator {
         mpg.setTemplate(tc);
         // 执行生成
         mpg.execute();
-        // 打印注入设置
+        // 打印注入属性
         System.err.println(mpg.getCfg().getMap().get("abc"));
         genJpaCode(PACKAGENAME,workspace,TABLES);
         System.exit(0);
