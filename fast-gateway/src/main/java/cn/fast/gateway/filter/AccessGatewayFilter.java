@@ -111,7 +111,7 @@ public class AccessGatewayFilter implements GlobalFilter {
      */
     private Mono<Void> unauthorized(ServerWebExchange serverWebExchange) {
         serverWebExchange.getResponse().setStatusCode(HttpStatus.OK);
-        String json = GsonUtil.gson2String(Result.fail("sorry，操作无权限"));
+        String json = GsonUtil.gson2String(Result.fail("操作无权限"));
         DataBuffer buffer = serverWebExchange.getResponse().bufferFactory().wrap(json.getBytes());
         return serverWebExchange.getResponse().writeWith(Flux.just(buffer));
     }

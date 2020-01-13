@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class RemoteUserClientFallback implements IRemoteUserClient {
 
     @Override
-    public Result queryAllMenusByName(String name) {
+    public Result accountInfo(String name) {
         return Result.fail("调用用户服务失败");
     }
 

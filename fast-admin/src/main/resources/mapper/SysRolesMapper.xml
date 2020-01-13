@@ -18,14 +18,18 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-                            id,
-                            create_time,
-                            update_time,
-                            create_by,
-                            update_by,
-                            is_del,
-                        code, name, def, remark, data_type
-        </sql>
+            id,
+            create_time,
+            update_time,
+            create_by,
+            update_by,
+            is_del,
+            code,
+            name,
+            def,
+            remark,
+            data_type
+    </sql>
 
     <select id="getAll" resultMap="BaseResultMap">
         SELECT
@@ -35,16 +39,16 @@
     <select id="getRolesByAccountId" parameterType="java.lang.String" resultType="cn.fast.admin.entity.SysRoles">
         SELECT r.id,r.code,r.name
         FROM sys_account_roles ar,
-             sys_roles r
+        sys_roles r
         where ar.rid = r.id
-          AND ar.aid = #{id}
+        AND ar.aid = #{id}
     </select>
     <select id="getPageList" resultType="cn.fast.admin.model.dto.RoleDTO">
-        SELECT sr.*,GROUP_CONCAT(DISTINCT srp.pid) pids,GROUP_CONCAT(DISTINCT srd.dept_id) depts
+        SELECT sr.*, GROUP_CONCAT(DISTINCT srp.pid) pids, GROUP_CONCAT(DISTINCT srd.dept_id) depts
         FROM sys_roles sr
                  LEFT JOIN sys_roles_permission srp ON sr.id = srp.rid
-                 LEFT JOIN sys_roles_dept srd ON sr.id=srd.rid
-        WHERE sr.is_del=0
+                 LEFT JOIN sys_roles_dept srd ON sr.id = srd.rid
+        WHERE sr.is_del = 0
         GROUP BY sr.id
     </select>
 </mapper>

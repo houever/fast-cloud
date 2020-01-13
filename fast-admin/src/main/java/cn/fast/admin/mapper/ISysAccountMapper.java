@@ -41,4 +41,6 @@ public interface ISysAccountMapper extends BaseMpMapper<SysAccount>{
      * @Param [id]
      **/
     List<SysAccount> findUserByRoleId(String id);
+
+    SysAccount findByUserName();
 }

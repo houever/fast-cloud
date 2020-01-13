@@ -83,7 +83,7 @@ public class SystemLoginController {
         String token = authToken.substring(7);
         OAuth2AccessToken oAuth2AccessToken = (OAuth2AccessToken) redisUtil.get(SecurityConstants.USER_TOKEN + token);
         if (oAuth2AccessToken != null) {
-            Result result = remoteUserClient.queryAllMenusByName(oAuth2AccessToken.getUsername());
+            Result result = remoteUserClient.accountInfo(oAuth2AccessToken.getUsername());
             return result;
         }
         return Result.fail("获取用户信息失败");

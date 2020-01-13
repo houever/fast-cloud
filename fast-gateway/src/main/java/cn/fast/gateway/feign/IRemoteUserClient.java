@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface IRemoteUserClient {
 
     @PostMapping(value = "/account/info",produces = "application/json;charset=UTF-8")
-    Result queryAllMenusByName(@RequestParam("username") String username);
+    Result accountInfo(@RequestParam("username") String username);
 
     @GetMapping(value = "/sysLoginConfig/bg")
     Result getSysLoginBg();

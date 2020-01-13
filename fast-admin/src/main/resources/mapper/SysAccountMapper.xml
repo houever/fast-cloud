@@ -30,27 +30,43 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-                            id,
-                            create_time,
-                            update_time,
-                            create_by,
-                            update_by,
-                            is_del,
-                        username, password, phone, avatar, introduction, address, gender, dept_id, email, nick_name, pass_strengh, type, enabled, account_non_expired, account_non_locked, credentials_non_expired, tenant_id
-        </sql>
+            id,
+            create_time,
+            update_time,
+            create_by,
+            update_by,
+            is_del,
+            username,
+            password,
+            phone,
+            avatar,
+            introduction,
+            address,
+            gender,
+            dept_id,
+            email,
+            nick_name,
+            pass_strengh,
+            type,
+            enabled,
+            account_non_expired,
+            account_non_locked,
+            credentials_non_expired,
+            tenant_id
+    </sql>
 
     <select id="getAll" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>
         FROM sys_account
     </select>
-    <select id="getAccountPage" parameterType="cn.fast.web.base.BasePage" resultType="cn.fast.admin.model.dto.AccountDTO">
+    <select id="getAccountPage" parameterType="cn.fast.web.base.BasePage"
+            resultType="cn.fast.admin.model.dto.AccountDTO">
         SELECT sa.*,sd.dept_name,GROUP_CONCAT(sar.rid) roles
         from sys_account sa
         LEFT JOIN sys_department sd ON sa.dept_id=sd.id
         LEFT JOIN sys_account_roles sar ON sa.id=sar.aid
-        <where>
-            1=1
+        <trim prefix="WHERE" prefixOverrides="AND">
             <if test="param.username != null and param.username!=''">
                 <bind name="param.username" value=" '%' + param.username + '%' "/>
                 AND sa.username like #{param.username}
@@ -66,16 +82,15 @@
             <if test="param.gender != null">
                 AND sa.gender= #{param.gender}
             </if>
-            AND sa.is_del=0
-            GROUP BY sa.id
-        </where>
+        </trim>
+        GROUP BY sa.id
     </select>
     <select id="selectRolesByUrl" parameterType="java.lang.String" resultType="java.lang.String">
         SELECT sr.code
         FROM sys_permission sp
-                 LEFT JOIN sys_roles_permission srp ON sp.id=srp.pid
-                 LEFT JOIN sys_roles sr ON srp.rid=sr.id
-        WHERE sp.pattern=#{url}
+        LEFT JOIN sys_roles_permission srp ON sp.id=srp.pid
+        LEFT JOIN sys_roles sr ON srp.rid=sr.id
+        WHERE sp.path=#{url}
     </select>
     <select id="findUserByRoleId" parameterType="java.lang.String" resultType="cn.fast.admin.entity.SysAccount">
         SELECT DISTINCT sa.*

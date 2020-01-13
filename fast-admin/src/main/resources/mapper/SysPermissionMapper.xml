@@ -24,14 +24,29 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-                            id,
-                            create_time,
-                            update_time,
-                            create_by,
-                            update_by,
-                            is_del,
-                        name, path, component, icon, title, hidden, redirect, always_show, enabled, keepalived, parent_id, type, btn_type, btn_code, sort, level
-        </sql>
+            id,
+            create_time,
+            update_time,
+            create_by,
+            update_by,
+            is_del,
+            name,
+            path,
+            component,
+            icon,
+            title,
+            hidden,
+            redirect,
+            always_show,
+            enabled,
+            keepalived,
+            parent_id,
+            type,
+            btn_type,
+            btn_code,
+            sort,
+            level
+    </sql>
 
     <select id="getAll" resultMap="BaseResultMap">
         SELECT
@@ -41,16 +56,16 @@
     <select id="getMenusListByUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
         SELECT sp.*
         FROM sys_account_roles ar
-                 LEFT JOIN sys_roles_permission rp ON ar.rid=rp.rid
-                 LEFT JOIN sys_permission sp ON rp.pid=sp.id
+        LEFT JOIN sys_roles_permission rp ON ar.rid=rp.rid
+        LEFT JOIN sys_permission sp ON rp.pid=sp.id
         WHERE sp.type=0 AND ar.aid=#{id}
         ORDER BY sp.sort
     </select>
     <select id="getPermissionBtnsByUserId" resultType="java.lang.String">
         SELECT sp.btn_code
         FROM sys_account_roles ar
-                 LEFT JOIN sys_roles_permission rp ON ar.rid=rp.rid
-                 LEFT JOIN sys_permission sp ON rp.pid=sp.id
+        LEFT JOIN sys_roles_permission rp ON ar.rid=rp.rid
+        LEFT JOIN sys_permission sp ON rp.pid=sp.id
         WHERE sp.type=1 AND ar.aid=#{id}
         ORDER BY sp.id
     </select>
@@ -58,8 +73,8 @@
     <select id="getPermissionByUserId" resultType="java.lang.String">
         SELECT sp.path
         FROM sys_account_roles ar
-                 LEFT JOIN sys_roles_permission rp ON ar.rid=rp.rid
-                 LEFT JOIN sys_permission sp ON rp.pid=sp.id
+        LEFT JOIN sys_roles_permission rp ON ar.rid=rp.rid
+        LEFT JOIN sys_permission sp ON rp.pid=sp.id
         WHERE sp.type=1 AND ar.aid=#{id}
         ORDER BY sp.id
     </select>

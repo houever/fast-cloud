@@ -31,34 +31,11 @@ public class RemoteUserClientFallbackImpl implements RemoteUserClient {
      * @return Result
      */
     @Override
-    public Result<AuthAccount> info(String username) {
+    public Result<AuthAccount> accountInfo(String username) {
         return Result.fail(ResultEnum.FEIGN_ERROR);
     }
 
-    @Override
-    public Result<List<String>> getAuthRolesByRequestUrl(String url) {
-        return null;
-    }
 
-    @Override
-    public Result queryAllMenusByName(String username) {
-        return null;
-    }
-
-    @Override
-    public Result<List<AuthAccount>> getAccountByIds(String ids) {
-        return null;
-    }
-
-    @Override
-    public Result<List<AuthRoles>> getRolesByIds(String ids) {
-        return null;
-    }
-
-    @Override
-    public Result<List<AuthAccount>> findUserByRoleId(String id) {
-        return null;
-    }
 
     /**
      * 通过社交账号或手机号查询用户、角色信息
@@ -69,17 +46,6 @@ public class RemoteUserClientFallbackImpl implements RemoteUserClient {
      */
     @Override
     public Result<AuthAccount> social(String inStr, String from) {
-        return Result.fail(ResultEnum.FEIGN_ERROR);
-    }
-
-    /**
-     * 根据userid查询user
-     *
-     * @param userId
-     * @return
-     */
-    @Override
-    public Result<AuthAccount> getAccountById(String userId) {
         return Result.fail(ResultEnum.FEIGN_ERROR);
     }
 }

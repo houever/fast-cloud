@@ -43,7 +43,7 @@ public class MyUserDetailsServiceImpl implements MyUserDetailsService {
 //        if (cache != null && cache.get(username) != null) {
 //            return (SysUser) cache.get(username).get();
 //        }
-        Result<AuthAccount> result = remoteUserClient.info(username);
+        Result<AuthAccount> result = remoteUserClient.accountInfo(username);
         log.debug("result====>{}",result);
         UserDetails userDetails = getUserDetails(result);
         //cache.put(username, userDetails);
