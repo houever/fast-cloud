@@ -29,7 +29,7 @@ import java.util.List;
 @Slf4j
 @Service
 @AllArgsConstructor
-public class SysAccountServiceImpl extends BaseServiceImpl<ISysAccountMapper,SysAccountRepository,SysAccount> implements ISysAccountService{
+public class SysAccountServiceImpl extends BaseServiceImpl<ISysAccountMapper,SysAccount> implements ISysAccountService{
 
     private ISysAccountMapper SysAccountMapper;
     private ISysAccountRolesMapper sysAccountRolesMapper;

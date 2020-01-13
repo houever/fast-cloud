@@ -15,7 +15,7 @@ import cn.fast.admin.mapper.ISysDictMapper;
  * @since 2020-01-07
  */
 @Service
-public class SysDictServiceImpl extends BaseServiceImpl<ISysDictMapper,SysDictRepository,SysDict> implements ISysDictService{
+public class SysDictServiceImpl extends BaseServiceImpl<ISysDictMapper,SysDict> implements ISysDictService{
 
     @Resource
     private ISysDictMapper SysDictMapper;

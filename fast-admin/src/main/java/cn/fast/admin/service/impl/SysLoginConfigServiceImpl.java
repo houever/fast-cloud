@@ -15,7 +15,7 @@ import cn.fast.admin.mapper.ISysLoginConfigMapper;
  * @since 2020-01-07
  */
 @Service
-public class SysLoginConfigServiceImpl extends BaseServiceImpl<ISysLoginConfigMapper,SysLoginConfigRepository,SysLoginConfig> implements ISysLoginConfigService{
+public class SysLoginConfigServiceImpl extends BaseServiceImpl<ISysLoginConfigMapper,SysLoginConfig> implements ISysLoginConfigService{
 
     @Resource
     private ISysLoginConfigMapper SysLoginConfigMapper;

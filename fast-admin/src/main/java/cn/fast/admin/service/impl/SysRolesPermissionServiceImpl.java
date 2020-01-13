@@ -15,7 +15,7 @@ import cn.fast.admin.mapper.ISysRolesPermissionMapper;
  * @since 2020-01-07
  */
 @Service
-public class SysRolesPermissionServiceImpl extends BaseServiceImpl<ISysRolesPermissionMapper,SysRolesPermissionRepository,SysRolesPermission> implements ISysRolesPermissionService{
+public class SysRolesPermissionServiceImpl extends BaseServiceImpl<ISysRolesPermissionMapper,SysRolesPermission> implements ISysRolesPermissionService{
 
     @Resource
     private ISysRolesPermissionMapper SysRolesPermissionMapper;

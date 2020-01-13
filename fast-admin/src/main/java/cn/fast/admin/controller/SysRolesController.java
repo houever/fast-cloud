@@ -12,6 +12,7 @@ import cn.fast.admin.model.dto.RoleDTO;
 import cn.fast.admin.service.ISysPermissionService;
 import cn.fast.admin.service.ISysRolesDeptService;
 import cn.fast.admin.service.ISysRolesPermissionService;
+import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestMapping;
 import cn.fast.admin.entity.SysRoles;
@@ -44,39 +45,39 @@ public class SysRolesController extends BaseController<ISysRolesService, SysRole
     private final ISysRolesService rolesService;
     private final ISysRolesPermissionService sysRolesPermissionService;
     private final ISysRolesDeptService sysRolesDeptService;
-    private final ISysPermissionService sysMenusService;
 
     @GetMapping(value = "/page")
-    public Result getRolePage(Page<RoleDTO> page){
+    public Result getRolePage(Page<RoleDTO> page) {
         IPage<RoleDTO> p = rolesService.getPageList(page);
         return Result.success(p);
     }
 
     @PostMapping(value = "/add")
-    public Result addRole(@RequestBody SysRoles sysRoles){
+    public Result addRole(@RequestBody SysRoles sysRoles) {
         boolean save = rolesService.save(sysRoles);
         return Result.success(save);
     }
+
     @PostMapping(value = "/edit")
-    public Result updateRole(@RequestBody SysRoles sysRoles){
+    public Result updateRole(@RequestBody SysRoles sysRoles) {
         boolean b = rolesService.updateById(sysRoles);
         return Result.success(b);
     }
 
     @DeleteMapping(value = "/del/{id}")
-    public Result updateRole(@PathVariable(name = "id") String id){
+    public Result updateRole(@PathVariable(name = "id") String id) {
         boolean b = rolesService.removeById(id);
         return Result.success(b);
     }
 
     @PostMapping(value = "/editPerm")
-    public Result editPerm(@RequestBody RoleDTO roleDTO){
+    public Result editPerm(@RequestBody RoleDTO roleDTO) {
         Integer i = sysRolesPermissionService.deleteRolesPermByRid(roleDTO.getId());
         boolean b = false;
         SysRolesPermission sysRolesPermission = null;
-        if(StrUtil.isNotEmpty(roleDTO.getPids())){
+        if (StrUtil.isNotEmpty(roleDTO.getPids())) {
             String[] pids = roleDTO.getPids().split(",");
-            for(String pid : pids){
+            for (String pid : pids) {
                 sysRolesPermission = new SysRolesPermission();
                 sysRolesPermission.setRid(roleDTO.getId());
                 sysRolesPermission.setPid(pid);
@@ -85,30 +86,29 @@ public class SysRolesController extends BaseController<ISysRolesService, SysRole
         }
         return Result.success(b);
     }
+
     @PostMapping(value = "/editDept")
-    public Result eidtRolesDept(@RequestBody RoleDTO roleDTO){
-        SysRoles sysRoles = ObjectConvertUtil.convert(roleDTO, SysRoles.class);
-        boolean b = rolesService.updateById(sysRoles);
-        Integer i = sysRolesDeptService.deleteRolesDeptByRid(roleDTO.getId());
+    public Result eidtRolesDept(@RequestBody RoleDTO roleDTO) {
+        boolean b = SqlHelper.retBool(sysRolesDeptService.deleteRolesDeptByRid(roleDTO.getId()));
         List<SysRolesDept> list = new ArrayList<SysRolesDept>();
         SysRolesDept sysRolesDept = null;
-        if(StrUtil.isNotEmpty(roleDTO.getDepts())){
+        if (StrUtil.isNotEmpty(roleDTO.getDepts())) {
             String[] deptIds = roleDTO.getDepts().split(",");
-            for(String deptId : deptIds){
+            for (String deptId : deptIds) {
                 sysRolesDept = new SysRolesDept();
                 sysRolesDept.setRid(roleDTO.getId());
                 sysRolesDept.setDeptId(deptId);
                 list.add(sysRolesDept);
             }
-            b = sysRolesDeptService.saveBatch(list);
+            sysRolesDeptService.saveBatch(list,list.size());
         }
         return Result.success(b);
     }
 
     @PostMapping(value = "/getRolesByIds")
-    public Result<List<AuthRoles>> getRolesByIds(String ids){
+    public Result<List<AuthRoles>> getRolesByIds(String ids) {
         List<String> roleIds = Arrays.asList(ids.split(","));
-        List<SysRoles> list = (List<SysRoles>)rolesService.listByIds(roleIds);
+        List<SysRoles> list = (List<SysRoles>) rolesService.listByIds(roleIds);
         List<AuthRoles> authRoles = ObjectConvertUtil.convertList(list, AuthRoles.class);
         return Result.success(authRoles);
     }

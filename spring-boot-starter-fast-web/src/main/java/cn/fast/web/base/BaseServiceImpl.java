@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public abstract class BaseServiceImpl<K extends BaseMpMapper<T>,R extends JpaRepository<T, String>, T> extends ServiceImpl<K , T> implements BaseService<T>{
+public abstract class BaseServiceImpl<K extends BaseMpMapper<T>, T> extends ServiceImpl<K , T> implements BaseService<T>{
 
     @Autowired
     protected K basempMapper;

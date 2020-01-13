@@ -15,7 +15,7 @@ import cn.fast.admin.mapper.ISysAccountRolesMapper;
  * @since 2020-01-07
  */
 @Service
-public class SysAccountRolesServiceImpl extends BaseServiceImpl<ISysAccountRolesMapper,SysAccountRolesRepository,SysAccountRoles> implements ISysAccountRolesService{
+public class SysAccountRolesServiceImpl extends BaseServiceImpl<ISysAccountRolesMapper,SysAccountRoles> implements ISysAccountRolesService{
 
     @Resource
     private ISysAccountRolesMapper SysAccountRolesMapper;

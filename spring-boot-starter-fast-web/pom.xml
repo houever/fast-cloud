@@ -21,7 +21,8 @@
 		<dependency>
 			<groupId>cn.fast</groupId>
 			<artifactId>spring-boot-starter-fast-common</artifactId>
-			<version>0.0.1-RELEASE</version>
+			<version>0.0.1.RELEASE</version>
+			<scope>compile</scope>
 		</dependency>
 		<!--spring-web依赖-->
 		<dependency>

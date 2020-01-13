@@ -56,7 +56,7 @@ spring:
         health-check-path: /actuator/health #定义 consul 健康检查路径
         health-check-timeout: 10s #健康检查超时时间
         prefer-ip-address: true
-        ip-address: ${LOCAL:10.1.70.75}
+        ip-address: ${LOCAL:10.1.70.74}
 # Mybatis-plus
 mybatis-plus:
   # 放在resource目录 classpath:/mapper/*Mapper.xml
@@ -99,6 +99,7 @@ mybatis-plus:
 logging:
   level:
     cn.fast.admin: debug
+    com.baomidou.mybatisplus: trace
     org.springframework.web: debug
     io.swagger.models.parameters.AbstractSerializableParameter: error
 # Swagger界面内容配置

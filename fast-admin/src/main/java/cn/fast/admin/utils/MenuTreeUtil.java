@@ -55,6 +55,7 @@ public class MenuTreeUtil{
         menuTreeDTO.setComponent(a.getComponent());
         menuTreeDTO.setSort(a.getSort());
         menuTreeDTO.setEnabled(a.getEnabled());
+        menuTreeDTO.setParentId(a.getParentId());
         return menuTreeDTO;
     }
 

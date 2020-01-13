@@ -15,7 +15,7 @@ import cn.fast.admin.mapper.ISysDepartmentMapper;
  * @since 2020-01-07
  */
 @Service
-public class SysDepartmentServiceImpl extends BaseServiceImpl<ISysDepartmentMapper,SysDepartmentRepository,SysDepartment> implements ISysDepartmentService{
+public class SysDepartmentServiceImpl extends BaseServiceImpl<ISysDepartmentMapper,SysDepartment> implements ISysDepartmentService{
 
     @Resource
     private ISysDepartmentMapper SysDepartmentMapper;

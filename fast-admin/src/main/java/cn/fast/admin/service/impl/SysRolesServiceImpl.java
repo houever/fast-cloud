@@ -21,7 +21,7 @@ import java.util.List;
  * @since 2020-01-07
  */
 @Service
-public class SysRolesServiceImpl extends BaseServiceImpl<ISysRolesMapper,SysRolesRepository,SysRoles> implements ISysRolesService{
+public class SysRolesServiceImpl extends BaseServiceImpl<ISysRolesMapper,SysRoles> implements ISysRolesService{
 
     @Resource
     private ISysRolesMapper SysRolesMapper;

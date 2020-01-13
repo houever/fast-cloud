@@ -15,7 +15,7 @@ import cn.fast.admin.mapper.ISysLogMapper;
  * @since 2020-01-07
  */
 @Service
-public class SysLogServiceImpl extends BaseServiceImpl<ISysLogMapper,SysLogRepository,SysLog> implements ISysLogService{
+public class SysLogServiceImpl extends BaseServiceImpl<ISysLogMapper,SysLog> implements ISysLogService{
 
     @Resource
     private ISysLogMapper SysLogMapper;

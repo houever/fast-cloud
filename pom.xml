@@ -57,7 +57,7 @@
         <security.oauth.version>2.3.3.RELEASE</security.oauth.version>
         <jackson.modules>2.9.6</jackson.modules>
         <activiti.version>5.22.0</activiti.version>
-        <docker.url>http://10.1.70.75:2375</docker.url>
+        <docker.url>http://10.1.70.74:2375</docker.url>
         <docker.registry>10.1.70.63/mycloud</docker.registry>
         <docker-maven.plugin.version>1.2.1</docker-maven.plugin.version>
     </properties>

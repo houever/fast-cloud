@@ -1,6 +1,8 @@
 package cn.fast.admin.controller;
 
 import cn.fast.web.common.utils.SnowFlakeUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -36,25 +38,27 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
 
     private final ISysPermissionService sysPermissionService;
 
+    @ApiOperation(value = "查询菜单列表")
     @GetMapping(value = "/menus")
-    public Result getAllMenusTree() {
+    public Result allPermissionsTree() {
         List<MenuTreeDTO> menuTreeDTOS = new MenuTreeUtil().MenusTree(sysPermissionService.list());
         return Result.success(menuTreeDTOS);
     }
 
+    @ApiOperation(value = "查询菜单树")
     @GetMapping(value = "/tree")
-    public Result getAllMenus() {
+    public Result permissionsTree() {
         List<MenuTreeDTO> menuTreeDTOS = new MenuTreeUtil().MenusTree(sysPermissionService.list(Wrappers.<SysPermission>query().orderByAsc("sort")));
         return Result.success(menuTreeDTOS);
     }
 
     @PostMapping(value = "/add")
-    public Result addMenu(@RequestBody SysPermission sysPermission) {
+    public Result addPermission(@RequestBody SysPermission sysPermission) {
         return Result.success(sysPermissionService.save(sysPermission));
     }
 
     @PostMapping(value = "/edit")
-    public Result updateMenu(@RequestBody SysPermission sysPermission) {
+    public Result editPermission(@RequestBody SysPermission sysPermission) {
         if (sysPermission.getId().equals("0")) {
             sysPermission.setId(String.valueOf(SnowFlakeUtil.getFlowIdInstance().nextId()));
             return Result.success(sysPermissionService.save(sysPermission));
@@ -63,8 +67,8 @@ public class SysPermissionController extends BaseController<ISysPermissionServic
         }
     }
 
-    @DeleteMapping(value = "/del/{id}")
-    public Result updateMenu(@PathVariable(name = "id") String id) {
+    @DeleteMapping(value = "/delById/{id}")
+    public Result delById(@PathVariable(name = "id") String id) {
         return Result.success(sysPermissionService.removeById(id));
     }
 

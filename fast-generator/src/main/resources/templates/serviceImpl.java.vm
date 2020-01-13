@@ -1,6 +1,7 @@
 package ${package.ServiceImpl};
 import javax.annotation.Resource;
 import cn.fast.web.base.BaseServiceImpl;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ${cfg.parent}.repository.${entity}Repository;
@@ -17,9 +18,10 @@ import ${package.Mapper}.${table.mapperName};
  */
 @Slf4j
 @Service
-public class ${table.serviceImplName} extends BaseServiceImpl<${table.mapperName},${entity}Repository,${entity}> implements ${table.serviceName}{
+@AllArgsConstructor
+public class ${table.serviceImplName} extends BaseServiceImpl<${table.mapperName},${entity}> implements ${table.serviceName}{
 
-    @Resource
     private ${table.mapperName} ${entity}Mapper;
+    private ${entity}Repository ${entity}Repository;
 
 }

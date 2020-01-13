@@ -50,7 +50,7 @@ public abstract class BaseController<K extends BaseService<T>, T, ID extends Ser
 
     @ApiOperation(value = "分页条件查询", notes = "分页查询", httpMethod = "GET")
     @PostMapping(value = "/page/{current}/{size}")
-    public Result<IPage<T>> getByPage(@PathVariable(name = "current") Long current, @PathVariable(name = "size") Long size, @RequestBody QueryWrapper<T> wrapper) {
+    public Result<IPage<T>> pageList(@PathVariable(name = "current") Long current, @PathVariable(name = "size") Long size, @RequestBody QueryWrapper<T> wrapper) {
         IPage<T> page = new Page<T>(current, size);
         return Result.success(baseService.page(page, wrapper));
     }

@@ -19,7 +19,7 @@ import java.util.List;
  * @since 2020-01-07
  */
 @Service
-public class SysPermissionServiceImpl extends BaseServiceImpl<ISysPermissionMapper,SysPermissionRepository,SysPermission> implements ISysPermissionService{
+public class SysPermissionServiceImpl extends BaseServiceImpl<ISysPermissionMapper,SysPermission> implements ISysPermissionService{
 
     @Resource
     private ISysPermissionMapper SysPermissionMapper;

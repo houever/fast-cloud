@@ -15,7 +15,7 @@ import cn.fast.admin.mapper.ISysRolesDeptMapper;
  * @since 2020-01-07
  */
 @Service
-public class SysRolesDeptServiceImpl extends BaseServiceImpl<ISysRolesDeptMapper,SysRolesDeptRepository,SysRolesDept> implements ISysRolesDeptService{
+public class SysRolesDeptServiceImpl extends BaseServiceImpl<ISysRolesDeptMapper,SysRolesDept> implements ISysRolesDeptService{
 
     @Resource
     private ISysRolesDeptMapper SysRolesDeptMapper;

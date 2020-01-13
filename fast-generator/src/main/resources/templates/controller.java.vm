@@ -63,7 +63,7 @@ public Result<${entity}> getById(@PathVariable(name = "id") String id){
   */
 @GetMapping(value = "/page/{current}/{size}")
 @ApiOperation(value = "分页获取")
-public Result<IPage<${entity}>>getByPage(@PathVariable(name = "current")Long current,@PathVariable(name = "size")Long size){
+public Result<IPage<${entity}>>page(@PathVariable(name = "current")Long current,@PathVariable(name = "size")Long size){
         IPage<${entity}> page=new Page<${entity}>(current,size);
         return Result.success(${entity}Service.page(page));
     }
@@ -74,7 +74,7 @@ public Result<IPage<${entity}>>getByPage(@PathVariable(name = "current")Long cur
   */
 @PostMapping(value = "/add")
 @ApiOperation(value = "保存数据")
-public Result save(@RequestBody ${entity} entity){
+public Result add${entity}(@RequestBody ${entity} entity){
         return Result.success(${entity}Service.save(entity));
     }
 /**
@@ -83,8 +83,11 @@ public Result save(@RequestBody ${entity} entity){
   */
 @PostMapping(value = "/modify")
 @ApiOperation(value = "更新数据")
-public Result modify(@RequestBody ${entity} entity){
+public Result modify${entity}(@RequestBody ${entity} entity){
         return Result.success(${entity}Service.updateById(entity));
     }
-
+@DeleteMapping(value = "/delById/{id}")
+public Result delById(@PathVariable(name = "id") String id) {
+        return Result.success(${entity}Service.removeById(id));
+    }
 }
