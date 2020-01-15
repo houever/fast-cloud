@@ -135,15 +135,6 @@ public class SysAccountController extends BaseController<ISysAccountService, Sys
     }
 
     /**
-     * 根据访问路径获取角色列表
-     */
-    @PostMapping(value = "/roles")
-    public Result getAuthRolesByRequestUrl(@RequestParam(name = "url") String url) {
-        List<String> list = sysAccountService.selectRolesByUrl(url);
-        return SUCCESS(list);
-    }
-
-    /**
      * 用户分页列表
      */
     @GetMapping(value = "/pages/{current}/{size}")

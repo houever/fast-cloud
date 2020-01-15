@@ -32,13 +32,6 @@ public interface ISysAccountService extends BaseService<SysAccount>{
     Integer updateAccount(AccountDTO accountDTO);
 
     /**
-     * 根据访问路径获取角色列表
-     * @param url
-     * @return
-     */
-    List<String> selectRolesByUrl(String url);
-
-    /**
      * @Author houqijun
      * @Description 根据角色id查询所有用户
      * @Date 16:10 2019/2/26 0026

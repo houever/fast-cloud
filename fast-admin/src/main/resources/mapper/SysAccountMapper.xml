@@ -85,13 +85,6 @@
         </trim>
         GROUP BY sa.id
     </select>
-    <select id="selectRolesByUrl" parameterType="java.lang.String" resultType="java.lang.String">
-        SELECT sr.code
-        FROM sys_permission sp
-        LEFT JOIN sys_roles_permission srp ON sp.id=srp.pid
-        LEFT JOIN sys_roles sr ON srp.rid=sr.id
-        WHERE sp.path=#{url}
-    </select>
     <select id="findUserByRoleId" parameterType="java.lang.String" resultType="cn.fast.admin.entity.SysAccount">
         SELECT DISTINCT sa.*
         FROM sys_account_roles sar INNER JOIN sys_account sa ON sar.aid=sa.id

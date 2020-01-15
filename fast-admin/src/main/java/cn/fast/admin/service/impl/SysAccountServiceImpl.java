@@ -71,17 +71,6 @@ public class SysAccountServiceImpl extends BaseServiceImpl<ISysAccountMapper,Sys
     }
 
     /**
-     * 根据访问路径获取角色列表
-     *
-     * @param url
-     * @return
-     */
-    @Override
-    public List<String> selectRolesByUrl(String url) {
-        return SysAccountMapper.selectRolesByUrl(url);
-    }
-
-    /**
      * @param id
      * @return java.util.List<cn.fast.usc.model.entity.SysAccount>
      * @Author houqijun

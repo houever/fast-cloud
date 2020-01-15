@@ -5,6 +5,7 @@ import cn.fast.web.common.result.Result;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ${cfg.parent}.repository.${entity}Repository;
 import ${package.Entity}.${entity};
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
@@ -44,6 +45,7 @@ public class ${table.controllerName} {
 #end
 
 private final ${table.serviceName} ${entity}Service;
+private final ${entity}Repository ${entity}Repository;
 
 /**
   * 根据id查询

@@ -2,9 +2,15 @@ package cn.fast.web.base;
 
 import cn.fast.web.common.controller.ResultController;
 import cn.fast.web.common.result.Result;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.additional.query.impl.LambdaQueryChainWrapper;
+import com.baomidou.mybatisplus.extension.service.additional.query.impl.QueryChainWrapper;
+import com.baomidou.mybatisplus.extension.service.additional.update.impl.LambdaUpdateChainWrapper;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,5 +76,27 @@ public abstract class BaseController<K extends BaseService<T>, T, ID extends Ser
             b = baseService.removeById(id);
         }
         return Result.success("批量删除成功");
+    }
+
+    protected QueryWrapper<T> queryWrapper(){
+        return new QueryWrapper<T>();
+    }
+
+    protected LambdaQueryWrapper<T> lambdaQueryWrapper(){
+        return new LambdaQueryWrapper<T>();
+    }
+
+    protected LambdaQueryChainWrapper<T> lambdaQueryChainWrapper(){
+        return new LambdaQueryChainWrapper<T>(baseService.getBaseMapper());
+    }
+
+    protected UpdateWrapper<T> updateWrapper(){
+        return new UpdateWrapper<T>();
+    }
+    protected LambdaUpdateWrapper<T> lambdaUpdateWrapper(){
+        return new LambdaUpdateWrapper<T>();
+    }
+    protected LambdaUpdateChainWrapper<T> lambdaUpdateChainWrapper(){
+        return new LambdaUpdateChainWrapper<>(baseService.getBaseMapper());
     }
 }
