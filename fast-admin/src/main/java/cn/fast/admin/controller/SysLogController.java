@@ -1,22 +1,18 @@
 package cn.fast.admin.controller;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import cn.fast.admin.entity.SysLog;
+import cn.fast.admin.service.ISysLogService;
+import cn.fast.web.base.BaseController;
 import cn.fast.web.common.result.Result;
 import io.swagger.annotations.Api;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestMapping;
-import cn.fast.admin.entity.SysLog;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.*;
-import cn.fast.admin.service.ISysLogService;
-
-import java.util.List;
-
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import cn.fast.web.base.BaseController;
 
 /**
  * <p>

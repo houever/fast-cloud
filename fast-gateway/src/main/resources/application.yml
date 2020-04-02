@@ -29,7 +29,7 @@ spring:
         health-check-path: /actuator/health #定义 consul 健康检查路径
         health-check-timeout: 10s #健康检查超时时间
         prefer-ip-address: true
-        ip-address: ${LOCAL:10.1.70.74}
+        ip-address: ${LOCAL:10.1.70.38}
     gateway:
       locator:
         enabled: true   # 启用服务注册与发现

@@ -1,5 +1,4 @@
 package cn.fast.web.controller;
-
 import cn.fast.web.common.result.Result;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;

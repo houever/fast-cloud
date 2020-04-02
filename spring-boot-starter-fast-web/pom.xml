@@ -22,7 +22,6 @@
 			<groupId>cn.fast</groupId>
 			<artifactId>spring-boot-starter-fast-common</artifactId>
 			<version>0.0.1.RELEASE</version>
-			<scope>compile</scope>
 		</dependency>
 		<!--spring-web依赖-->
 		<dependency>
@@ -40,11 +39,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
-		<!--消息总线-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-amqp</artifactId>
-		</dependency>
 		<!--undertow 容器-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -59,11 +53,6 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-consul-discovery</artifactId>
-		</dependency>
-		<!--消息总线-->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
 		</dependency>
 		<!--jpa依赖-->
 		<dependency>

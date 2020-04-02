@@ -1,6 +1,7 @@
 package cn.fast.web.aspect;
 
 import cn.fast.web.aspect.log.annotations.SystemLog;
+import cn.fast.web.aspect.log.event.SysLogEvent;
 import cn.fast.web.aspect.log.model.SysLog;
 import cn.fast.web.aspect.log.utils.IpInfoUtil;
 import cn.fast.web.aspect.log.utils.SysLogUtils;
@@ -8,6 +9,7 @@ import cn.fast.web.common.constant.Constant;
 import cn.fast.web.common.constant.SecurityConstants;
 import cn.fast.web.common.model.OAuth2AccessToken;
 import cn.fast.web.common.utils.GsonUtil;
+import cn.fast.web.utils.SpringContextHolder;
 import cn.hutool.core.util.URLUtil;
 import cn.hutool.http.HttpUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +19,6 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.core.NamedThreadLocal;
 
 import javax.annotation.Resource;
@@ -40,11 +41,6 @@ public class SysLogAspect {
     HttpServletRequest request;
 
     private static final ThreadLocal<Date> beginTimeThreadLocal = new NamedThreadLocal<Date>("ThreadLocal beginTime");
-
-
-    @Resource
-    private RabbitTemplate rabbitTemplate;
-
 
     /**
      * Controller层切点,返回值方式
@@ -110,8 +106,8 @@ public class SysLogAspect {
         }
         Long endTime = System.currentTimeMillis();
         sysLog.setCostTime(endTime - startTime);
-        rabbitTemplate.convertAndSend("sys_log_queue", GsonUtil.gson2String(sysLog));
-        //SpringContextHolder.publishEvent(new SysLogEvent(sysLog));
+//        rabbitTemplate.convertAndSend("sys_log_queue", GsonUtil.gson2String(sysLog));
+        SpringContextHolder.publishEvent(new SysLogEvent(sysLog));
         return obj;
 
     }
