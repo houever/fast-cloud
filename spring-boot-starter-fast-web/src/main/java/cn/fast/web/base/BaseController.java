@@ -78,24 +78,10 @@ public abstract class BaseController<K extends BaseService<T>, T, ID extends Ser
         return Result.success("批量删除成功");
     }
 
-    protected QueryWrapper<T> queryWrapper(){
-        return new QueryWrapper<T>();
-    }
-
-    protected LambdaQueryWrapper<T> lambdaQueryWrapper(){
-        return new LambdaQueryWrapper<T>();
-    }
-
     protected LambdaQueryChainWrapper<T> lambdaQueryChainWrapper(){
         return new LambdaQueryChainWrapper<T>(baseService.getBaseMapper());
     }
 
-    protected UpdateWrapper<T> updateWrapper(){
-        return new UpdateWrapper<T>();
-    }
-    protected LambdaUpdateWrapper<T> lambdaUpdateWrapper(){
-        return new LambdaUpdateWrapper<T>();
-    }
     protected LambdaUpdateChainWrapper<T> lambdaUpdateChainWrapper(){
         return new LambdaUpdateChainWrapper<>(baseService.getBaseMapper());
     }
