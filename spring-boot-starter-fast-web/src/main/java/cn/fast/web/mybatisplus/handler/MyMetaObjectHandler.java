@@ -1,7 +1,7 @@
 package cn.fast.web.mybatisplus.handler;
 
 import cn.fast.web.common.exception.BusinessExcpetion;
-import cn.fast.web.mybatisplus.tenant.TenantContextHolder;
+import cn.fast.web.mybatisplus.TenantContextHolder;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
