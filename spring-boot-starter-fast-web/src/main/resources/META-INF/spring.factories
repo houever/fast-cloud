@@ -5,5 +5,5 @@ cn.fast.web.CustomSpringWebMvcConfig,\
 cn.fast.web.mybatisplus.MybatisPlusConfig,\
 cn.fast.web.filter.CustomFilter,\
 cn.fast.web.mybatisplus.handler.MyMetaObjectHandler,\
-cn.fast.web.mybatisplus.tenant.TenantContextHolderFilter,\
+cn.fast.web.mybatisplus.filter.TenantContextHolderFilter,\
 cn.fast.web.controller.CommonController
