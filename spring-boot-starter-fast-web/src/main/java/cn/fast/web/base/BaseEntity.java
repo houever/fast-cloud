@@ -39,7 +39,7 @@ public class BaseEntity extends Model implements Serializable {
      */
     //@TableLogic(value = "0", delval = "1")
     @ApiModelProperty(value = "是否已删除:0 未删除，1已删除",hidden = true)
-    protected Integer isDel = 0;
+    protected Integer deleted = 0;
 
     /*创建人*/
     @TableField(value = "create_by",fill = FieldFill.INSERT)
