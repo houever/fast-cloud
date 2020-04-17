@@ -6,4 +6,8 @@ cn.fast.web.mybatisplus.MybatisPlusConfig,\
 cn.fast.web.filter.CustomFilter,\
 cn.fast.web.mybatisplus.handler.MyMetaObjectHandler,\
 cn.fast.web.mybatisplus.filter.TenantContextHolderFilter,\
-cn.fast.web.controller.CommonController
+cn.fast.web.advice.ExceptionHandlerAdvice,\
+cn.fast.web.advice.CustomRequestBodyAdvice,\
+cn.fast.web.controller.CommonController,\
+cn.fast.web.email.CustomMailSender,\
+cn.fast.web.handler.CustomExceptionHandler

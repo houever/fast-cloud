@@ -1,7 +1,5 @@
 package cn.fast.web;
 
-import cn.fast.web.advice.CustomRequestBodyAdvice;
-import cn.fast.web.advice.ExceptionHandlerAdvice;
 import cn.fast.web.advice.callable.CustomDeferredResultProcessingInterceptor;
 import cn.fast.web.config.CurrentUserResolver;
 import cn.fast.web.config.ReqInterceptor;
@@ -10,7 +8,6 @@ import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -28,7 +25,6 @@ import java.util.List;
  * @author: houqijun
  * @create: 2019-02-26 10:06
  **/
-@Import({ExceptionHandlerAdvice.class, CustomRequestBodyAdvice.class})
 @Configuration
 public class CustomSpringWebMvcConfig extends WebMvcConfigurationSupport {
 

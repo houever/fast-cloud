@@ -94,7 +94,7 @@ public class SysLogAspect {
                 .setIpAddress(IpInfoUtil.getIpCity(request.getRemoteHost()))
                 .setTitle(desc)
                 .setType(type)
-                .setCreateBy(oAuth2AccessToken.getUsername());
+                .setUsername(oAuth2AccessToken.getUsername());
 
         Object obj = null;
         try{
@@ -106,7 +106,6 @@ public class SysLogAspect {
         }
         Long endTime = System.currentTimeMillis();
         sysLog.setCostTime(endTime - startTime);
-//        rabbitTemplate.convertAndSend("sys_log_queue", GsonUtil.gson2String(sysLog));
         SpringContextHolder.publishEvent(new SysLogEvent(sysLog));
         return obj;
 

@@ -80,23 +80,6 @@ public class SysLog {
      */
     private String exception;
 
-    /**
-     * 创建人
-     */
-    private String createBy;
-
-    /*创建时间*/
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    protected Date createTime;
-
-
-    /*修改人*/
-    protected String updateBy;
-
-    /*修改时间*/
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    protected Date updateTime;
-
 
 
 }
