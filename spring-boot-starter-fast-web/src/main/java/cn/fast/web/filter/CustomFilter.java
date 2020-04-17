@@ -2,6 +2,7 @@ package cn.fast.web.filter;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -26,6 +27,7 @@ public class CustomFilter extends GenericFilterBean {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest)servletRequest;
+        MDC.put("ip",request.getRemoteAddr());
         log.debug("请求:{}进入filter",request.getRequestURI());
         filterChain.doFilter(servletRequest,servletResponse);
     }

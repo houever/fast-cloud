@@ -40,7 +40,7 @@ public class CustomMailSender {
             log.info("发送普通文本邮件：{}", mail.getContent());
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom(USER_NAME);
-            message.setTo(mail.getEmail());
+            message.setTo(mail.getTo());
             message.setSubject(mail.getSubject());
             message.setText(mail.getContent());
             javaMailSender.send(message);
@@ -55,7 +55,7 @@ public class CustomMailSender {
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
             //这里可以自定义发信名称比如：工作流
             helper.setFrom(USER_NAME, "系统邮件通知");
-            helper.setTo(mail.getEmail());
+            helper.setTo(mail.getTo());
             helper.setSubject(mail.getSubject());
             Map<String, Object> model = new HashMap<>();
             model.put("mail", mail);

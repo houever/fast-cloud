@@ -23,8 +23,8 @@ public class CustomExceptionHandler {
     @Resource
     private CustomMailSender customMailSender;
 
-    @Value("${alarm.email}")
-    private String[] email;
+    @Value("${spring.mail.to}")
+    private String[] to;
 
     @Async
     public void handleException(Exception e,HttpServletRequest request){
@@ -32,7 +32,7 @@ public class CustomExceptionHandler {
         StringWriter stringWriter = new StringWriter();
         e.printStackTrace(new PrintWriter(stringWriter));
         Email mail = new Email();
-        mail.setEmail(email);
+        mail.setTo(to);
         mail.setSubject("异常告警邮件通知");
         mail.setContent(stringWriter.toString());
         // mailService.send(mail);//发送普通邮件

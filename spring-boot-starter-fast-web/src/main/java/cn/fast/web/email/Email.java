@@ -18,7 +18,7 @@ public class Email implements Serializable {
     private static final long serialVersionUID = 1L;
 
     // 必填参数
-    private String[] email;// 接收方邮件数组
+    private String[] to;// 接收方邮件数组
     private String subject;// 主题,邮件标题
     private String content;// 邮件内容文本
     // 以模板发送邮件的时候填写以下参数的值
@@ -29,9 +29,9 @@ public class Email implements Serializable {
         super();
     }
 
-    public Email(String[] email, String subject, String content, String template, HashMap<String, Object> kvMap) {
+    public Email(String[] to, String subject, String content, String template, HashMap<String, Object> kvMap) {
         super();
-        this.email = email;
+        this.to = this.to;
         this.subject = subject;
         this.content = content;
         this.template = template;
