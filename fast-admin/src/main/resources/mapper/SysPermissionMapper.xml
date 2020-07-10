@@ -29,7 +29,6 @@
             update_time,
             create_by,
             update_by,
-            is_del,
             name,
             path,
             component,

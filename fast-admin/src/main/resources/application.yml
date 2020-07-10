@@ -1,11 +1,11 @@
 spring:
   rabbitmq:
-    host: ${RABBIT_MQ_HOST:10.1.70.78}
+    host: ${RABBIT_MQ_HOST:10.2.95.37}
     port: ${RABBIT_MQ_PORT:5672}
     username: ${RABBIT_MQ_USERNAME:guest}
     password: ${RABBIT_MQ_PASSWORD:guest}
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:10.1.70.78}:3306/fast-admin?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF8&autoReconnect=true&useSSL=false
+    url: jdbc:mysql://${MYSQL_HOST:10.2.95.37}:3306/fast-admin?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF8&autoReconnect=true&useSSL=false
     username: root
     # Jasypt加密 可到common-utils中找到JasyptUtil加解密工具类生成加密结果 格式为ENC(加密结果)
     password: 123456
@@ -24,7 +24,7 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     #配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
   redis:
-    host: ${REDIS_HOST:10.1.70.78}
+    host: ${REDIS_HOST:10.2.95.37}
     port: 6379
     password:
   jpa:
@@ -45,7 +45,7 @@ spring:
   cloud:
     consul:
       enabled: true
-      host: ${CONSUL_HOST:10.1.70.78}
+      host: ${CONSUL_HOST:10.2.95.37}
       port: 8500
       discovery:
         service-name: ${spring.application.name} #设置 注册到 consul 的服务名称
@@ -56,7 +56,7 @@ spring:
         health-check-path: /actuator/health #定义 consul 健康检查路径
         health-check-timeout: 10s #健康检查超时时间
         prefer-ip-address: true
-        ip-address: ${LOCAL:10.1.70.38}
+        ip-address: ${LOCAL:10.2.95.29}
 # Mybatis-plus
 mybatis-plus:
   # 放在resource目录 classpath:/mapper/*Mapper.xml

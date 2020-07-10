@@ -1,4 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+cn.fast.web.aspect.SysLogAspect,\
 cn.fast.web.swagger.Swagger2Properties,\
 cn.fast.web.swagger.Swagger2Config,\
 cn.fast.web.CustomSpringWebMvcConfig,\
@@ -9,5 +10,4 @@ cn.fast.web.mybatisplus.filter.TenantContextHolderFilter,\
 cn.fast.web.advice.ExceptionHandlerAdvice,\
 cn.fast.web.advice.CustomRequestBodyAdvice,\
 cn.fast.web.controller.CommonController,\
-cn.fast.web.email.CustomMailSender,\
 cn.fast.web.handler.CustomExceptionHandler

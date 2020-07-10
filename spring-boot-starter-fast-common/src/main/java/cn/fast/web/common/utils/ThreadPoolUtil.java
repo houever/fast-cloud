@@ -1,9 +1,6 @@
 package cn.fast.web.common.utils;
 
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  *
@@ -13,7 +10,7 @@ public class ThreadPoolUtil {
     /**
      * 线程缓冲队列
      */
-    private static BlockingQueue<Runnable> bqueue = new ArrayBlockingQueue<Runnable>(100);
+    private static BlockingQueue<Runnable> bqueue = new LinkedBlockingDeque<>(50);
     /**
      * 核心线程数，会一直存活，即使没有任务，线程池也会维护线程的最少数量
      */
@@ -39,6 +36,10 @@ public class ThreadPoolUtil {
      */
     private static ThreadPoolExecutor pool = new ThreadPoolExecutor(SIZE_CORE_POOL, SIZE_MAX_POOL, ALIVE_TIME, TimeUnit.MILLISECONDS, bqueue, new ThreadPoolExecutor.CallerRunsPolicy());
 
+    public static void submit(Runnable r){
+        pool.submit(r);
+    }
+
     static {
 
         pool.prestartAllCoreThreads();
@@ -50,5 +51,6 @@ public class ThreadPoolUtil {
 
     public static void main(String[] args) {
         System.out.println(pool.getPoolSize());
+        System.out.println ("获取CPU个数"+Runtime.getRuntime ().availableProcessors () );
     }
 }

@@ -1,9 +1,9 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 10.1.70.78
+Source Server         : 10.2.95.37
 Source Server Version : 50722
-Source Host           : 10.1.70.78:3306
+Source Host           : 10.2.95.37:3306
 Source Database       : fast-admin
 
 Target Server Type    : MYSQL
@@ -41,7 +41,6 @@ CREATE TABLE `sys_account` (
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   `create_by` varchar(50) DEFAULT NULL COMMENT '创建人',
   `update_by` varchar(50) DEFAULT NULL COMMENT '修改人',
-  `is_del` tinyint(1) DEFAULT '0' COMMENT '是否删除',
   `tenant_id` int(11) DEFAULT NULL COMMENT '租户id',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='账户表';
@@ -323,7 +322,7 @@ INSERT INTO `sys_permission` VALUES ('109396987530448896', '流程管理', 'proc
 INSERT INTO `sys_permission` VALUES ('109397142623227904', '模型管理', 'model-manage', '/activiti/model-manage/modelManage', 'md-cube', '模型管理', '0', null, '1', '1', '0', '109395715276410880', '0', '0', null, '6.00', '2', '2019-02-15 02:19:27', '2019-07-19 11:47:17', null, 'admin', '0');
 INSERT INTO `sys_permission` VALUES ('109397297376268288', '流程分类管理', 'category-manage', '/activiti/category-manage/categoryManage', 'md-bowtie', '流程分类管理', '0', null, '1', '1', '0', '109395715276410880', '0', '0', null, '7.00', '2', '2019-02-15 02:20:04', '2019-07-19 11:47:35', null, 'admin', '0');
 INSERT INTO `sys_permission` VALUES ('110568738775896064', 'Kibana监控', 'http://10.1.70.84:5601', '/system/monitor/monitor', 'md-eye', 'Kibana监控', '0', null, '1', '1', '0', '106612642122043392', '0', '0', null, '0.50', '2', '2019-02-16 23:41:56', '2019-12-19 10:49:19', null, 'admin', '0');
-INSERT INTO `sys_permission` VALUES ('110569708826136576', 'es-head监控', 'http://10.1.70.38:9100/', '/system/monitor/monitor', 'logo-designernews', 'es-head监控', '0', null, '1', '1', '0', '106612642122043392', '0', '0', null, '0.70', '2', '2019-02-16 23:45:47', '2019-09-29 15:42:31', null, 'admin', '0');
+INSERT INTO `sys_permission` VALUES ('110569708826136576', 'es-head监控', 'http://10.2.95.29:9100/', '/system/monitor/monitor', 'logo-designernews', 'es-head监控', '0', null, '1', '1', '0', '106612642122043392', '0', '0', null, '0.70', '2', '2019-02-16 23:45:47', '2019-09-29 15:42:31', null, 'admin', '0');
 INSERT INTO `sys_permission` VALUES ('110570269952708608', 'Grafana监控', 'http://192.168.52.130:3000', '/system/monitor/monitor', 'ios-cog', 'Grafana监控', '0', null, '1', '1', '0', '106612642122043392', '0', '0', null, '0.90', '2', '2019-02-16 23:48:01', '2019-09-29 15:42:31', null, 'admin', '0');
 INSERT INTO `sys_permission` VALUES ('110658154085224448', '添加模型', '/model/add', '', '', '', '0', null, '1', '1', '0', '109397142623227904', '1', '0', null, '0.00', '3', '2019-02-17 05:37:14', '2019-12-27 11:08:53', null, null, '0');
 INSERT INTO `sys_permission` VALUES ('110919528413663232', '部署发布模型', '/api-act/model/deploy', '', '', '', '0', null, '1', '1', '0', '109397142623227904', '1', '0', null, '0.20', '3', '2019-02-17 14:55:04', '2019-07-19 11:39:56', null, null, '0');

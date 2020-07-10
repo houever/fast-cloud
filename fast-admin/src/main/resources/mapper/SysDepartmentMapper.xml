@@ -8,7 +8,6 @@
         <result column="update_time" property="updateTime"/>
         <result column="create_by" property="createBy"/>
         <result column="update_by" property="updateBy"/>
-        <result column="is_del" property="isDel"/>
         <result column="dept_name" property="deptName"/>
         <result column="leader" property="leader"/>
         <result column="parent_id" property="parentId"/>
@@ -24,7 +23,6 @@
             update_time,
             create_by,
             update_by,
-            is_del,
             dept_name,
             leader,
             parent_id,

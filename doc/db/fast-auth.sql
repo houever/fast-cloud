@@ -1,9 +1,9 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 10.1.70.78
+Source Server         : 10.2.95.37
 Source Server Version : 50722
-Source Host           : 10.1.70.78:3306
+Source Host           : 10.2.95.37:3306
 Source Database       : fast-auth
 
 Target Server Type    : MYSQL

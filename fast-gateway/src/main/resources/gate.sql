@@ -12,7 +12,6 @@ create table route
    predicates           text comment '断言字符串',
    filters              text comment '过滤器字符串',
    is_ebl               tinyint(1) comment '是否启用',
-   is_del               tinyint(1) comment '是否删除',
    create_time          timestamp default CURRENT_TIMESTAMP comment '创建时间',
    update_time          timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '修改时间',
    primary key (id)

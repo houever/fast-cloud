@@ -8,7 +8,6 @@
         <result column="update_time" property="updateTime"/>
         <result column="create_by" property="createBy"/>
         <result column="update_by" property="updateBy"/>
-        <result column="is_del" property="isDel"/>
         <result column="code" property="code"/>
         <result column="name" property="name"/>
         <result column="def" property="def"/>
@@ -23,7 +22,6 @@
             update_time,
             create_by,
             update_by,
-            is_del,
             code,
             name,
             def,
@@ -48,7 +46,7 @@
         FROM sys_roles sr
                  LEFT JOIN sys_roles_permission srp ON sr.id = srp.rid
                  LEFT JOIN sys_roles_dept srd ON sr.id = srd.rid
-        WHERE sr.is_del = 0
+        WHERE sr.deleted = 0
         GROUP BY sr.id
     </select>
 </mapper>

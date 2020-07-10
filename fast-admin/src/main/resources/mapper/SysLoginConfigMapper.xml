@@ -8,7 +8,6 @@
         <result column="update_time" property="updateTime"/>
         <result column="create_by" property="createBy"/>
         <result column="update_by" property="updateBy"/>
-        <result column="is_del" property="isDel"/>
         <result column="bg_video" property="bgVideo"/>
         <result column="bg_webm" property="bgWebm"/>
         <result column="bg_img" property="bgImg"/>
@@ -22,7 +21,6 @@
             update_time,
             create_by,
             update_by,
-            is_del,
             bg_video,
             bg_webm,
             bg_img,

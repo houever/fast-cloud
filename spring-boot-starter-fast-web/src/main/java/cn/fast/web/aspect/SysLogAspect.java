@@ -91,7 +91,7 @@ public class SysLogAspect {
                 .setMethod(request.getMethod())
                 .setUserAgent(request.getHeader("user-agent"))
                 .setParams(HttpUtil.toParams(request.getParameterMap()))
-                .setIpAddress(IpInfoUtil.getIpCity(request.getRemoteHost()))
+                .setIpAddress("127.0.0.1")
                 .setTitle(desc)
                 .setType(type)
                 .setUsername(oAuth2AccessToken.getUsername());

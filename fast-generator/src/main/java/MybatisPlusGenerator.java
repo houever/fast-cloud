@@ -94,11 +94,11 @@ public class MybatisPlusGenerator {
         strategy.setSuperEntityClass("cn.fast.web.base.BaseEntity");
         strategy.setSuperControllerClass("cn.fast.web.base.BaseController");
         //父类中的字段
-        strategy.setSuperEntityColumns(new String[]{"id", "create_time", "update_time", "create_by", "update_by", "is_del"});
+        strategy.setSuperEntityColumns(new String[]{"id", "create_time", "update_time", "create_by", "update_by", "deleted"});
         strategy.setControllerMappingHyphenStyle(true);
         //strategy.setExclude(new String[]{"order"}); // 排除生成的表
         strategy.setEntityBuilderModel(true);
-        strategy.setLogicDeleteFieldName("is_del");//逻辑删除字段名称
+        strategy.setLogicDeleteFieldName("deleted");//逻辑删除字段名称
         mpg.setStrategy(strategy);
 
         // 包配置

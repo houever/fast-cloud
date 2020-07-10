@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Id;
@@ -53,6 +54,7 @@ public class BaseEntity extends Model implements Serializable {
     protected Date createTime;
 
     /*修改人*/
+    @CreatedBy
     @TableField(value ="update_by",fill = FieldFill.UPDATE)
     @ApiModelProperty(value = "修改人")
     protected String updateBy;

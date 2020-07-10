@@ -2,6 +2,11 @@ package cn.fast.admin.utils;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
+
 /**
  * @author Administrator
  *  cn.fast.auth.oauth2server
@@ -32,5 +37,10 @@ public class BCryptUtil {
 //    }
     public static void main(String[] args) {
         //System.out.println(encode("mycloud"));
+        Map<String,String> map = new HashMap<>();
+        map.put("1","1");
+        Optional<String> opt = Optional.ofNullable(map.get("2"));
+        System.out.println(opt.isPresent());
+        System.out.println(opt.toString());
     }
 }

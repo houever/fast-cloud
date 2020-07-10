@@ -8,7 +8,6 @@
         <result column="update_time" property="updateTime"/>
         <result column="create_by" property="createBy"/>
         <result column="update_by" property="updateBy"/>
-        <result column="is_del" property="isDel"/>
         <result column="title" property="title"/>
         <result column="sort" property="sort"/>
         <result column="type" property="type"/>
@@ -22,7 +21,6 @@
             update_time,
             create_by,
             update_by,
-            is_del,
             title,
             sort,
             type,

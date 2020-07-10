@@ -137,6 +137,7 @@ public class SysAccountController extends BaseController<ISysAccountService, Sys
     /**
      * 用户分页列表
      */
+    @SystemLog(serviceId = serviceId, moduleName = moduleName, actionName = "用户分页", value = "用户分页")
     @GetMapping(value = "/pages/{current}/{size}")
     public Result getAccountPageList(@PathVariable(name = "current") Long current, @PathVariable(name = "size") Long size, AccountQueryParam queryParam) {
         BasePage<AccountDTO> basePage = new BasePage(current, size, queryParam);
@@ -201,7 +202,7 @@ public class SysAccountController extends BaseController<ISysAccountService, Sys
     @DeleteMapping(value = "/{ids}")
     public Result delAccount(@PathVariable(name = "ids") String ids) {
         UpdateWrapper<SysAccount> sysAccountUpdateWrapper = new UpdateWrapper<>();
-        sysAccountUpdateWrapper.set("is_del", 1);
+        sysAccountUpdateWrapper.set("deleted", 1);
         sysAccountUpdateWrapper.in("id", ids.split(","));
         boolean b = sysAccountService.update(sysAccountUpdateWrapper);
         return SUCCESS(b);

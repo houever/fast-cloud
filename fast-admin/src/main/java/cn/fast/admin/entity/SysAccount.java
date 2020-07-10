@@ -1,5 +1,6 @@
 package cn.fast.admin.entity;
 
+import cn.fast.admin.model.enums.Gender;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -17,6 +18,9 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Lob;
 
 /**
  * <p>
@@ -70,7 +74,8 @@ public class SysAccount extends BaseEntity {
      * 性别
      */
     @ApiModelProperty(value = "性别", example = "性别")
-    private Integer gender;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
     /**
      * 部门id
      */

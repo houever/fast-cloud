@@ -28,11 +28,31 @@
 			<artifactId>spring-boot-starter-fast-web</artifactId>
 			<version>0.0.1.RELEASE</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
     </dependencies>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot.version}</version>
+				<configuration>
+					<finalName>${project.build.finalName}</finalName>
+<!--					<includes>-->
+<!--						<include>-->
+<!--							<groupId>nothing</groupId>-->
+<!--							<artifactId>nothing</artifactId>-->
+<!--						</include>-->
+<!--					</includes>-->
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
