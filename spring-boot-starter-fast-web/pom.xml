@@ -54,11 +54,6 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-consul-discovery</artifactId>
 		</dependency>
-		<!-- freemarker -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-freemarker</artifactId>
-		</dependency>
 		<!--jpa依赖-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
