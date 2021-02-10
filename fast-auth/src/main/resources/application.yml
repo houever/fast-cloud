@@ -15,9 +15,9 @@ spring:
       time-to-live: 1d
       use-key-prefix: true
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:47.94.39.182}:3306/fast-auth?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF8&autoReconnect=true&useSSL=false
+    url: jdbc:mysql://${MYSQL_HOST:10.2.95.149}:3306/fast-auth?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF8&autoReconnect=true&useSSL=false
     username: root
-    password: Wdadmin@2020
+    password: ${MYSQL_PASS:123456}
     driver-class-name: com.mysql.jdbc.Driver
   cloud:
     nacos:

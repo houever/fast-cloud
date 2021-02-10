@@ -5,10 +5,10 @@ spring:
     username: ${RABBIT_MQ_USERNAME:guest}
     password: ${RABBIT_MQ_PASSWORD:guest}
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:47.94.39.182}:3306/fast-admin?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF8&autoReconnect=true&useSSL=false
+    url: jdbc:mysql://${MYSQL_HOST:10.2.95.149}:3306/fast-admin?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF8&autoReconnect=true&useSSL=false
     username: root
     # Jasypt加密 可到common-utils中找到JasyptUtil加解密工具类生成加密结果 格式为ENC(加密结果)
-    password: Wdadmin@2020
+    password: ${MYSQL_PASS:123456}
     driver-class-name: com.mysql.jdbc.Driver
     initialSize: 1
     maxActive: 20
