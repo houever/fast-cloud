@@ -34,6 +34,12 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<!--springcloud 依赖-->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+			<version>${nacos.version}</version>
+		</dependency>
 		<!--aop切面-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -51,8 +57,9 @@
 		</dependency>
 		<!--springcloud 依赖-->
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-consul-discovery</artifactId>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+			<version>${nacos.version}</version>
 		</dependency>
 		<!--jpa依赖-->
 		<dependency>

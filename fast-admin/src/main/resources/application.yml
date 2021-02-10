@@ -1,14 +1,14 @@
 spring:
   rabbitmq:
-    host: ${RABBIT_MQ_HOST:10.2.95.37}
+    host: ${RABBIT_MQ_HOST:10.2.95.149}
     port: ${RABBIT_MQ_PORT:5672}
     username: ${RABBIT_MQ_USERNAME:guest}
     password: ${RABBIT_MQ_PASSWORD:guest}
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:10.2.95.37}:3306/fast-admin?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF8&autoReconnect=true&useSSL=false
+    url: jdbc:mysql://${MYSQL_HOST:47.94.39.182}:3306/fast-admin?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF8&autoReconnect=true&useSSL=false
     username: root
     # Jasypt加密 可到common-utils中找到JasyptUtil加解密工具类生成加密结果 格式为ENC(加密结果)
-    password: 123456
+    password: Wdadmin@2020
     driver-class-name: com.mysql.jdbc.Driver
     initialSize: 1
     maxActive: 20
@@ -24,7 +24,7 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     #配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
   redis:
-    host: ${REDIS_HOST:10.2.95.37}
+    host: ${REDIS_HOST:10.2.95.149}
     port: 6379
     password:
   jpa:
@@ -43,20 +43,9 @@ spring:
   resources:
     add-mappings: true
   cloud:
-    consul:
-      enabled: true
-      host: ${CONSUL_HOST:10.2.95.37}
-      port: 8500
+    nacos:
       discovery:
-        service-name: ${spring.application.name} #设置 注册到 consul 的服务名称
-        register: true # 是否开启在 consul 中注册服务
-        enabled: true #启用 consul 服务发现
-        health-check-interval: 10s  # consul 健康检查频率
-        instance-id: ${spring.application.name}:${server.port}  # 配置注册到consul 服务的id
-        health-check-path: /actuator/health #定义 consul 健康检查路径
-        health-check-timeout: 10s #健康检查超时时间
-        prefer-ip-address: true
-        ip-address: ${LOCAL:10.2.95.29}
+        server-addr: ${NACOS_HOST:10.2.95.149}:9999
 # Mybatis-plus
 mybatis-plus:
   # 放在resource目录 classpath:/mapper/*Mapper.xml
@@ -127,3 +116,4 @@ management:
         #- health,status,env,metrics,dump,jolokia,info,
         #configprops,trace,logfile,refresh,flyway,
         #liquibase,heapdump,loggers,auditevents,hystrix.stream,activiti
+logservice: fast-admin

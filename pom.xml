@@ -36,7 +36,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- Spring cloud Settings -->
         <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
-        <zipkin.version>2.10.1</zipkin.version>
+        <nacos.version>2.2.1.RELEASE</nacos.version>
         <spring-boot.version>2.2.0.RELEASE</spring-boot.version>
         <redis.version>2.1.2.RELEASE</redis.version>
         <spring-platform.version>Cairo-SR6</spring-platform.version>
@@ -83,6 +83,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>${nacos.version}</version>
+            </dependency>
             <!--spring-web依赖-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -105,13 +110,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-devtools</artifactId>
                 <version>2.1.4.RELEASE</version>
-            </dependency>
-            <dependency>
-                <groupId>io.zipkin.java</groupId>
-                <artifactId>zipkin</artifactId>
-                <version>${zipkin.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>mysql</groupId>

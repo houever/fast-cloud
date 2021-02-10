@@ -1,0 +1,50 @@
+version: '3'
+services:
+  consul:
+    container_name: consul
+    restart: always
+    image: consul
+    ports:
+      - 8500:8500
+  mysql:
+    restart: always
+    image: mysql:5.7.22
+    privileged: true
+    container_name: mysql
+    ports:
+      - 3306:3306
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: 123456
+    command:
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --explicit_defaults_for_timestamp=true
+      --lower_case_table_names=1
+      --max_allowed_packet=128M
+      --sql-mode="STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO"
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./logs:/var/log/mysql
+  redis:
+    image: redis
+    container_name: redis
+    restart: always
+    privileged: true
+    volumes:
+      - ./data/redis:/data
+    environment:
+      - REDIS_PASSWORD=123456
+    ports:
+      - 6379:6379
+
+  rabbitmq:
+    image: rabbitmq:3.7-management
+    container_name: rabbitmq
+    privileged: true
+    restart: always
+    volumes:
+      - ./data/rabbitmq:/var/lib/rabbitmq/mnesia
+    ports:
+      - 5672:5672
+      - 15672:15672

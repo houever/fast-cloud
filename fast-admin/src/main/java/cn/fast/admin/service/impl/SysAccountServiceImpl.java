@@ -1,20 +1,18 @@
 package cn.fast.admin.service.impl;
-import javax.annotation.Resource;
 
+import cn.fast.admin.entity.SysAccount;
+import cn.fast.admin.entity.SysAccountRoles;
+import cn.fast.admin.mapper.ISysAccountMapper;
+import cn.fast.admin.mapper.ISysAccountRolesMapper;
+import cn.fast.admin.model.dto.AccountDTO;
+import cn.fast.admin.service.ISysAccountService;
 import cn.fast.web.base.BasePage;
 import cn.fast.web.base.BaseServiceImpl;
 import cn.fast.web.utils.ObjectConvertUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import cn.fast.admin.entity.SysAccountRoles;
-import cn.fast.admin.mapper.ISysAccountRolesMapper;
-import cn.fast.admin.model.dto.AccountDTO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import cn.fast.admin.repository.SysAccountRepository;
-import cn.fast.admin.entity.SysAccount;
-import cn.fast.admin.service.ISysAccountService;
-import cn.fast.admin.mapper.ISysAccountMapper;
 
 import java.util.List;
 
@@ -66,7 +64,6 @@ public class SysAccountServiceImpl extends BaseServiceImpl<ISysAccountMapper,Sys
             sysAccountRoles.setRid(rid);
             sysAccountRolesMapper.insert(sysAccountRoles);
         }
-
         return i;
     }
 

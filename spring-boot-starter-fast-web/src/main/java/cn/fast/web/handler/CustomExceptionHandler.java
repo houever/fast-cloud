@@ -27,6 +27,6 @@ public class CustomExceptionHandler {
         mapParam.put("exceptionCause", e.getCause());
         mapParam.put("exceptionMessage", e.getMessage());
         mapParam.put("exceptionClass", e.getClass());
-        log.info("异步处理异常通知:{}",e.getCause());
+        log.info("异步处理异常通知:{}",mapParam);
     }
 }

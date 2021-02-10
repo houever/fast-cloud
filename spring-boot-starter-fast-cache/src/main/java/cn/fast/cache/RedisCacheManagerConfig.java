@@ -11,8 +11,6 @@ import java.util.List;
 
 /**
  * CacheManagerCustomizers配置
- *
- * @author L.cm
  */
 @Configuration
 @ConditionalOnMissingBean(CacheManagerCustomizers.class)
